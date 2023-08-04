@@ -6,7 +6,7 @@
 @endphp
 
 <a @if (!$disabled) href="{{ route("$route") }}" @endif {{ $attributes->merge(['class' => $classes]) }}>
-    <i class="fa-solid {{ $icon }} text-3xl text-gray-500"></i>
+    <i class="{{ $icon }} text-3xl text-gray-500"></i>
     <h5 class="my-2 text-2xl font-semibold tracking-tight text-gray-900">{{ $title }}</h5>
     <p class="mb-3 font-normal text-gray-500">{{ $summary }}</p>
     @if ($disabled)

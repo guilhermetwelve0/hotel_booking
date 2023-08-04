@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomTypeController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('setting')->name('setting.')->group(function (){
         Route::view('/', 'setting.index')->name('index');
+        Route::resource('/user', RegisteredUserController::class);
     });
 });
 

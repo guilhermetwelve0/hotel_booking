@@ -15,6 +15,12 @@ use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
+
+    public function index()
+    {
+        $users = User::get();
+        return view('setting.user.index', compact('users'));
+    }
     /**
      * Display the registration view.
      */
@@ -48,4 +54,5 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
 }

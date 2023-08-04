@@ -5,26 +5,26 @@
         </h2>
     </x-slot>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-3 gap-4 py-10">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid sm:grid-cols-2 md:grid-cols-3 gap-4 py-10 justify-center">
         @php
             $settings = [
                 "Admin Users' Setting" => [
-                    "icon" => "fa-users-gear",
-                    "route" => "dashboard",
+                    "icon" => "fa-solid fa-users-gear",
+                    "route" => "setting.user.index",
                     "summary" => "List of Administration Users, Add new account, Edit User Information and Delete Accounts.",
                 ],
                 "Guest List" => [
-                    "icon" => "fa-users-viewfinder",
+                    "icon" => "fa-solid fa-users-viewfinder",
                     "route" => "dashboard",
                     "summary" => "List of Guests, Add new Guest, Edit Guest Information and Delete guests.",
                 ],
                 "Website Setting" => [
-                    "icon" => "fa-sliders",
+                    "icon" => "fa-solid fa-sliders",
                     "route" => "dashboard",
                     "summary" => "Website Banner Images, Contact Emails, Phone Numbers and Other Informations.",
                 ],
                 "VIP Guests" => [
-                    "icon" => "fa-star",
+                    "icon" => "fa-regular fa-star",
                     "route" => "dashboard",
                     "summary" => "Set VIP Member Guests to imporove Customer Management Services.",
                     "disabled" => true,
