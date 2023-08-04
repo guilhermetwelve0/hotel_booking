@@ -10,6 +10,6 @@
     <h5 class="my-2 text-2xl font-semibold tracking-tight text-gray-900">{{ $title }}</h5>
     <p class="mb-3 font-normal text-gray-500">{{ $summary }}</p>
     @if ($disabled)
-        <span class="absolute top-3 right-3 bg-secondary px-7 rounded-full">Pro</span>
+        <span class="absolute top-3 right-3 bg-secondary px-7 text-neutral btn-rounded-reverse" style="--mask-size: .45em;">Pro</span>
     @endif
 </a>

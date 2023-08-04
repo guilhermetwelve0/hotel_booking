@@ -86,7 +86,7 @@
             <x-responsive-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
                 {{ __('Room Info') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
+            <x-responsive-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*')">
                 {{ __('Setting') }}
             </x-responsive-nav-link>
         </div>
