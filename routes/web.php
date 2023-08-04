@@ -33,6 +33,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('room-info')->name('room-info.')->group(function (){
         Route::resource('room-type', RoomTypeController::class);
     });
+
+    Route::prefix('setting')->name('setting.')->group(function (){
+        Route::view('/', 'setting.index')->name('index');
+    });
 });
 
 require __DIR__.'/auth.php';

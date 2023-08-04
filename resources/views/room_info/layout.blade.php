@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
-            {{ __('Room Information') }}<i class="fa-solid fa-door-open ms-3"></i>
+            {{ __('Room Info') }}<i class="fa-solid fa-dungeon ms-3"></i>
         </h2>
     </x-slot>
         <div class="relative h-screen">
@@ -32,7 +32,7 @@
                         <li>
                             @include('components.sidebar-links',["route"=>"dashboard",
                                                                     "name"=>"Branches",
-                                                                    "icon"=>"fa-code-branch",
+                                                                    "icon"=>"fa-sitemap",
                                                                     "disabled"=>true])
                         </li>
                         <li>

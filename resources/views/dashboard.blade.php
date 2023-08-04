@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
-            <i class="fa-solid fa-hotel pe-2"></i> {{ __('Dashboard') }}
+            {{ __('Dashboard') }}<i class="fa-solid fa-chart-pie ps-3"></i>
         </h2>
     </x-slot>
 
