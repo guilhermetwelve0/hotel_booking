@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>@yield('title', 'Adminstration') | {{ config('app.name', 'Hotel Booking System') }}</title>
+
+        <link rel="stylesheet" href="{{ asset('/css/scroll.css')}}">
+        <link rel="stylesheet" href="{{ asset('/css/style.css')}}">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -35,5 +38,6 @@
                 {{ $slot }}
             </main>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
     </body>
 </html>

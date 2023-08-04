@@ -1,0 +1,35 @@
+:root {
+    --sidebar-size: 300px;
+}
+
+#room_info_sidebar {
+    width: var(--sidebar-size);
+}
+
+.btn-rounded-reverse {
+    --mask-size: 10px;
+    --negative-mask-size: calc(var(--mask-size) * -1);
+    --mask: radial-gradient(var(--mask-size) at var(--mask-size) var(--mask-size),
+            #0000 98%, #000) var(--negative-mask-size) var(--negative-mask-size);
+    -webkit-mask: var(--mask);
+            mask: var(--mask);
+}
+
+/* sm */
+@media (min-width: 640px) {
+    .room-info-section {
+        margin-left: var(--sidebar-size);
+    }
+}
+
+/* md */
+@media (min-width: 768px) {}
+
+/* lg */
+@media (min-width: 1024px) {}
+
+/* xl */
+@media (min-width: 1280px) {}
+
+/* 2xl */
+@media (min-width: 1536px) {}

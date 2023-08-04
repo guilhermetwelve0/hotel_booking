@@ -19,7 +19,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
                         {{ __('Reception') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
+                    <x-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
                         {{ __('Room Info') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
