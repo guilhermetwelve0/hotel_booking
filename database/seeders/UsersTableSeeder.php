@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Danielle',
                 'email' => 'danielle@newjeans.com',
-                'password' => Hash::make('danielle@newjeans'),
+                'password' => Hash::make('password'),
             ],
             [
                 'name' => 'Irene',
@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Lily',
                 'email' => 'lily@nmixx.com',
-                'password' => Hash::make('lily@nmixx'),
+                'password' => Hash::make('password'),
             ],
             [
                 'name' => 'Lisa',
@@ -68,7 +68,7 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Winter',
                 'email' => 'winter@aespa.com',
-                'password' => Hash::make('winter@aespa'),
+                'password' => Hash::make('password'),
             ]
         ];
 

@@ -5,9 +5,10 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ url('/') }}">
                         {{-- <x-application-logo class="block h-9 w-auto fill-current text-secondary" /> --}}
-                        <i class="fa-solid fa-crown text-2xl text-secondary"></i>
+                        {{-- <i class="fa-solid fa-crown text-2xl text-secondary"></i> --}}
+                        <img src="{{asset('img/crown.png')}}" alt="crown" width="50px">
                     </a>
                 </div>
 
