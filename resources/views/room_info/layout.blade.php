@@ -20,7 +20,7 @@
                                                                 "icon"=>"fa-tags"])
                         </li>
                         <li>
-                            @include('components.sidebar-links',["route"=>"dashboard",
+                            @include('components.sidebar-links',["route"=>"room-info.service-facility.index",
                                                                 "name"=>"Services & Facilities",
                                                                 "icon"=>"fa-bell-concierge"])
                         </li>

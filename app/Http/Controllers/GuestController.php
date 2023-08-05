@@ -12,7 +12,8 @@ class GuestController extends Controller
      */
     public function index()
     {
-        //
+        $guests = Guest::get();
+        return view('setting.guest.index', compact('guests'));
     }
 
     /**
@@ -44,7 +45,7 @@ class GuestController extends Controller
      */
     public function edit(Guest $guest)
     {
-        //
+        dd($guest);
     }
 
     /**
@@ -60,6 +61,5 @@ class GuestController extends Controller
      */
     public function destroy(Guest $guest)
     {
-        //
     }
 }

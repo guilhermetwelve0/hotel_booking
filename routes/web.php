@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomTypeController;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\ServiceFacilityController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Models\ServiceFacility;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,11 +36,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('room-info')->name('room-info.')->group(function (){
         Route::resource('room-type', RoomTypeController::class);
+        Route::resource('service-facility', ServiceFacilityController::class);
     });
 
     Route::prefix('setting')->name('setting.')->group(function (){
         Route::view('/', 'setting.index')->name('index');
         Route::resource('/user', RegisteredUserController::class);
+        Route::resource('/guest', GuestController::class);
     });
 });
 

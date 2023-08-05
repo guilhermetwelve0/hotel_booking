@@ -4,7 +4,7 @@
     $common = "flex items-center p-2 rounded-lg group ps-7 btn-rounded-reverse ";
     $classes =  request()->routeIs($route)
                 ? $common .= "text-primary bg-secondary"
-                : $common .= isset($disabled) ? 'text-gray-400' : 'hover:bg-gray-700 text-neutral';
+                : $common .= isset($disabled) ? 'text-gray-400' : 'hover:bg-gray-700 text-white';
     @endphp
 
     <a @if (!isset($disabled)) href="{{ route("$route") }}" @endif {{ $attributes->merge(['class' => $classes]) }}>

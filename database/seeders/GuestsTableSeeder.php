@@ -23,7 +23,7 @@ class GuestsTableSeeder extends Seeder
                 "email" => "mina@twice.com"
             ],
             [
-                "name" => "Mono",
+                "name" => "Momo",
                 "email" => "momo@twice.com"
             ],
             [

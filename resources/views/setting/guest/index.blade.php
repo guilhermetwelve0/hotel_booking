@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
-            {{ __('Users') }}<i class="fa-solid fa-solid fa-users-gear ps-3"></i>
+            {{ __('Guests') }}<i class="fa-solid fa-users-viewfinder ps-3"></i>
         </h2>
     </x-slot>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-4 justify-center">
         <div class="flex justify-between items-center p-4">
             @include('components.back-and-create-btn', [
-                'name' => 'User',
+                'name' => 'Guest',
                 'route' => 'dashboard',
                 'back' => 'setting.index',
             ])
@@ -24,9 +24,9 @@
                 ];
             @endphp
             @include('components.table', [
-                'records' => $users,
+                'records' => $guests,
                 'fields' => $fields,
-                'route' => 'setting.user',
+                'route' => 'setting.guest',
             ])
         </div>
     </div>

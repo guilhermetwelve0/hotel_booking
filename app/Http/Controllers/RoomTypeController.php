@@ -12,7 +12,8 @@ class RoomTypeController extends Controller
      */
     public function index()
     {
-        return view('room_info.room_type.index');
+        $types = RoomType::get();
+        return view('room_info.room_type.index', compact('types'));
     }
 
     /**
@@ -44,7 +45,7 @@ class RoomTypeController extends Controller
      */
     public function edit(RoomType $roomType)
     {
-        //
+        dd($roomType);
     }
 
     /**

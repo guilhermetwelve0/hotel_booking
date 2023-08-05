@@ -15,7 +15,7 @@
                 ],
                 "Guest List" => [
                     "icon" => "fa-solid fa-users-viewfinder",
-                    "route" => "dashboard",
+                    "route" => "setting.guest.index",
                     "summary" => "List of Guests, Add new Guest, Edit Guest Information and Delete guests.",
                 ],
                 "Website Setting" => [

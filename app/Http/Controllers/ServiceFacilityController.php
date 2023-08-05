@@ -12,7 +12,8 @@ class ServiceFacilityController extends Controller
      */
     public function index()
     {
-        //
+        $services = ServiceFacility::get();
+        return view('room_info.service_facility.index', compact('services'));
     }
 
     /**
@@ -36,7 +37,7 @@ class ServiceFacilityController extends Controller
      */
     public function show(ServiceFacility $serviceFacility)
     {
-        //
+        dd($serviceFacility);
     }
 
     /**

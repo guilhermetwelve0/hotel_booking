@@ -32,7 +32,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-neutral bg-primary hover:text-secondary focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:text-secondary focus:outline-none transition ease-in-out duration-150">
                             <div><i class="fa-regular fa-circle-user text-xl me-2"></i>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
@@ -95,7 +95,7 @@
         <div class="pt-4 pb-1 border-t border-accent">
             <div class="px-4">
                 <div class="font-medium text-base text-accent">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-neutral">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-sm text-white">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
