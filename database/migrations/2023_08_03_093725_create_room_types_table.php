@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+        Schema::create('room_types', function (Blueprint $table) {
+            $table->id();
             $table->string('name')->unique();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->unique();
-            $table->string('updated_by')->nullable();
-            $table->rememberToken();
+            $table->string('slug')->unique();
+            $table->integer('price')->default(0);
+            $table->longText('description')->nullable();
+            $table->longText('thumbnail')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('room_types');
     }
 };
