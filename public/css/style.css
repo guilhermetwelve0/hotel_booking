@@ -1,50 +1,66 @@
-    :root {
-        --sidebar-size: 300px;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
-    #room_info_sidebar {
-        width: var(--sidebar-size);
-    }
+:root {
+    --sidebar-size: 300px;
+    --primary: "#13293D";
+    --secondary: "#DAA520";
+    --accent: "#F0EAD6";
+}
 
-    .btn-rounded-reverse {
-        --mask-size: .6em;
-        --negative-mask-size: calc(var(--mask-size) * -1);
-        --mask: radial-gradient(var(--mask-size) at var(--mask-size) var(--mask-size),
-                #0000 98%, #000) var(--negative-mask-size) var(--negative-mask-size);
-        -webkit-mask: var(--mask);
-                mask: var(--mask);
-    }
+.cinzel-decorative{
+    font-family: 'Cinzel Decorative', cursive;
+}
 
-    /* Data Table */
-    .dataTables_wrapper .dataTables_length select{
-        background-image: none !important;
-    }
-    .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate{
-        margin: 10px 20px;
-    }
-    .dataTables_wrapper{
-        color: #13293D;
-    }
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-    .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
-        border-radius: 10px !important;
-    }
+#room_info_sidebar {
+    width: var(--sidebar-size);
+}
 
-    /* sm */
-    @media (min-width: 640px) {
-        .room-info-section {
-            margin-left: var(--sidebar-size);
-        }
+.btn-rounded-reverse {
+    --mask-size: .6em;
+    --negative-mask-size: calc(var(--mask-size) * -1);
+    --mask: radial-gradient(var(--mask-size) at var(--mask-size) var(--mask-size),
+            #0000 98%, #000) var(--negative-mask-size) var(--negative-mask-size);
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+}
+
+/* Data Table */
+.dataTables_wrapper .dataTables_length select {
+    background-image: none !important;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+    margin: 10px 20px;
+}
+
+.dataTables_wrapper {
+    color: #13293D;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    border-radius: 10px !important;
+}
+
+/* sm */
+@media (min-width: 640px) {
+    .room-info-section {
+        margin-left: var(--sidebar-size);
     }
+}
 
-    /* md */
-    @media (min-width: 768px) {}
+/* md */
+@media (min-width: 768px) {}
 
-    /* lg */
-    @media (min-width: 1024px) {}
+/* lg */
+@media (min-width: 1024px) {}
 
-    /* xl */
-    @media (min-width: 1280px) {}
+/* xl */
+@media (min-width: 1280px) {}
 
-    /* 2xl */
-    @media (min-width: 1536px) {}
+/* 2xl */
+@media (min-width: 1536px) {}
