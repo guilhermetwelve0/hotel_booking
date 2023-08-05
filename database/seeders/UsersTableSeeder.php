@@ -16,66 +16,60 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'Admin User',
-                'email' => 'admin@gmail.com',
+                'name' => 'Super Admin',
+                'email' => 'admin@crown.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Mg Mg',
-                'email' => 'mgmg@gmail.com',
+                'name' => 'Danielle',
+                'email' => 'danielle@newjeans.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'User',
-                'email' => 'user@gmail.com',
+                'name' => 'Irene',
+                'email' => 'irene@redvelvet.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Mo Mo',
-                'email' => 'momo@gmail.com',
+                'name' => 'Jennie',
+                'email' => 'jennie@blackpink.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Tzuyu',
-                'email' => 'tzuyu@gmail.com',
+                'name' => 'Karina',
+                'email' => 'karina@aespa.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Sana',
-                'email' => 'sana@gmail.com',
+                'name' => 'Lia',
+                'email' => 'lia@itzy.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Mina',
-                'email' => 'mina@gmail.com',
+                'name' => 'Liz',
+                'email' => 'liz@ive.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Minji',
-                'email' => 'minji@gmail.com',
+                'name' => 'Lily',
+                'email' => 'lily@nmixx.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Hanni',
-                'email' => 'hanni@gmail.com',
+                'name' => 'Lisa',
+                'email' => 'lisa@blackpink.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Ryujin',
-                'email' => 'ryujin@gmail.com',
+                'name' => 'Rose',
+                'email' => 'rose@blackpink.com',
                 'password' => Hash::make('password'),
             ],
             [
-                'name' => 'Yeji',
-                'email' => 'yeji@gmail.com',
+                'name' => 'Winter',
+                'email' => 'winter@aespa.com',
                 'password' => Hash::make('password'),
-            ],
-            [
-                'name' => 'Yuna',
-                'email' => 'yuna@gmail.com',
-                'password' => Hash::make('password'),
-            ],
-
+            ]
         ];
 
         foreach ($users as $data) {

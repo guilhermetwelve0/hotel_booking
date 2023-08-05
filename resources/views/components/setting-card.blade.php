@@ -2,7 +2,7 @@
 
 @php
     $common = "relative max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow ";
-    $classes = $common .= $disabled ? 'bg-gray-200' : ' hover:bg-gray-100';
+    $classes = $common .= $disabled ? 'bg-gray-300' : ' hover:bg-gray-100';
 @endphp
 
 <a @if (!$disabled) href="{{ route("$route") }}" @endif {{ $attributes->merge(['class' => $classes]) }}>

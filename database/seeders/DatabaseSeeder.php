@@ -21,11 +21,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UsersTableSeeder::class,
-            // BrandsTableSeeder::class,
-            // CategoriesTableSeeder::class,
-            // ProductsTableSeeder::class,
-            // BlogsTableSeeder::class,
-            // BannersTableSeeder::class,
+            RoomTypesTableSeeder::class,
+            GuestsTableSeeder::class,
+            ServiceFacilitiesTableSeeder::class,
         ]);
     }
 }
