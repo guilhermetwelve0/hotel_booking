@@ -1,3 +1,4 @@
+@section('title', "Guest List")
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
@@ -11,6 +12,7 @@
                 'name' => 'Guest',
                 'route' => 'dashboard',
                 'back' => 'setting.index',
+                'create' => true
             ])
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">

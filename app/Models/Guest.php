@@ -14,7 +14,14 @@ class Guest extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'updated_by'
+    ];
+
+    protected $guarded = ['created_at', 'updated_at', 'deleted_at'];
 
     protected static function boot()
     {

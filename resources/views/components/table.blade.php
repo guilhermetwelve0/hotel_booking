@@ -11,11 +11,11 @@
                 @php
                     $idx = array_search($col, array_keys($fields));
                 @endphp
-                <th class="bg-gray-{{ $idx % 2 ? '100' : '50' }}">
+                <th class="bg-gray-{{ $idx % 2 ? '50' : '100' }}">
                         {{$label}}
                 </th>
             @endforeach
-            <th class="bg-gray-{{count($fields) % 2 ? '100' : '50' }}">
+            <th class="bg-gray-{{count($fields) % 2 ? '50' : '100' }}">
                 Actions
             </th>
         </tr>
@@ -28,18 +28,28 @@
                     @php
                         $idx = array_search($col, array_keys($fields));
                     @endphp
-                    <td class="bg-gray-{{ $idx % 2 ? '50' : '100' }}">
+                    <td class="bg-gray-{{ $idx % 2 ? '100' : '50' }}">
                         @if ($col == 'created_at' || $col == 'updated_at')
-                            {{$record->$col->toFormattedDateString()}}
+                            {{$record->$col->format('M d, Y')}}
+
+                        @elseif ($col == 'updated_by')
+                            {{$record->updatedByUser->name ?? '---'}}
                         @else
                             {{$record->$col ?? "---"}}
                         @endif
                     </td>
                 @endforeach
-                <td class="bg-gray-{{count($fields) % 2 ? '50' : '100' }}">
-                    <a href='{{ route("$route.edit", $record->id)}}' class="px-1 mx-1" title="Edit">
-                        <i class="fa-solid fa-pen-to-square fa-lg text-secondary"></i>
-                    </a>
+                <td class="bg-gray-{{count($fields) % 2 ? '100' : '50' }}">
+                        @php
+                            $edit_route = $route;
+                            if(auth()->user()->id == $record->id){
+                                $edit_route = "profile";
+                            }
+                        @endphp
+                        <a href='{{ route("$edit_route.edit", $record->id)}}' class="px-1 mx-1" title="Edit">
+                            <i class="fa-solid fa-pen-to-square fa-lg text-secondary"></i>
+                        </a>
+
                     <a href="" class="px-1 mx-1" title="Delete">
                         <i class="fa-solid fa-trash-can fa-lg text-rose-400"></i>
                     </a>

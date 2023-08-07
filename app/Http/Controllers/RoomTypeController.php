@@ -21,7 +21,7 @@ class RoomTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('room_info.room_type.form');
     }
 
     /**

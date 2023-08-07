@@ -10,7 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use App\Http\Requests\UserRequest;
+
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
@@ -18,7 +19,7 @@ class RegisteredUserController extends Controller
 
     public function index()
     {
-        $users = User::get();
+        $users = User::orderBy('created_at')->get();
         return view('setting.user.index', compact('users'));
     }
     /**
@@ -26,7 +27,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        // return view('auth.register');
+        return view('setting.user.create-edit');
     }
 
     /**
@@ -34,14 +36,8 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(UserRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -50,9 +46,23 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
+
+        return redirect()->route('setting.user.index');
     }
 
+    public function edit(User $user)
+    {
+        return view('setting.user.create-edit', compact('user'));
+    }
+
+    public function update(UserRequest $request, User $user)
+    {
+        $validated = $request->validated();
+        $user->update($validated);
+
+        return redirect()->route('setting.user.index');
+    }
 }

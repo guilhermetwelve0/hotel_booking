@@ -4,13 +4,9 @@
 
 @section('content')
     <div class="flex justify-between items-center pb-4">
-        @include('components.back-and-create-btn', [
-            'name' => 'Room Type',
-            'route' => 'room-info.room-type.create',
-            'create' => true
-        ])
+        @include('components.back-and-create-btn',['back'=> 'room-info.room-type.index'])
     </div>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    {{-- <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         @php
             $fields = [
                 "name" => "Name",
@@ -23,5 +19,5 @@
                                         "fields" => $fields,
                                         "route" => "room-info.room-type",
                                         "view" => true])
-    </div>
+    </div> --}}
 @endsection

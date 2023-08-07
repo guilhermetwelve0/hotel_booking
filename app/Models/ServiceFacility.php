@@ -10,7 +10,12 @@ class ServiceFacility extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'slug',
+        'price',
+        'icon',
+    ];
 
     public function setNameAttribute($value)
     {

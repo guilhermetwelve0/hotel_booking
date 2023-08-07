@@ -10,7 +10,13 @@ class RoomType extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = [
+        'name',
+        'slug',
+        'price',
+        'description',
+        'thumbnail'
+    ];
 
     public function setNameAttribute($value)
     {

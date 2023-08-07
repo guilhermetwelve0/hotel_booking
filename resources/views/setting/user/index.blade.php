@@ -1,16 +1,19 @@
+@section('title', "Admin Users' Setting")
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
-            {{ __('Users') }}<i class="fa-solid fa-solid fa-users-gear ps-3"></i>
+            {{ __('Admin Users') }}<i class="fa-solid fa-solid fa-users-gear ps-3"></i>
         </h2>
     </x-slot>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-4 justify-center">
-        <div class="flex justify-between items-center p-4">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10 justify-center">
+        <div class="flex justify-between items-center px-5 sm:px-0">
             @include('components.back-and-create-btn', [
-                'name' => 'User',
-                'route' => 'dashboard',
+                'name' => 'Admin',
+                'route' => 'setting.user.create',
                 'back' => 'setting.index',
+                'create' => true
             ])
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
