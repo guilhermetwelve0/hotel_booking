@@ -7,7 +7,7 @@
         </h2>
     </x-slot>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-10 justify-center">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-7 justify-center">
         <div class="flex justify-between items-center px-5 sm:px-0">
             @include('components.back-and-create-btn', [
                 'name' => 'Admin',

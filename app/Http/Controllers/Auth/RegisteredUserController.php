@@ -50,7 +50,7 @@ class RegisteredUserController extends Controller
 
         // return redirect(RouteServiceProvider::HOME);
 
-        return redirect()->route('setting.user.index');
+        return redirect()->route('setting.user.index')->with('success', 'New Admin User Successfully Created!');
     }
 
     public function edit(User $user)
@@ -63,6 +63,6 @@ class RegisteredUserController extends Controller
         $validated = $request->validated();
         $user->update($validated);
 
-        return redirect()->route('setting.user.index');
+        return redirect()->route('setting.user.index')->with('success', 'Admin User Info Updated Successfully!');
     }
 }
