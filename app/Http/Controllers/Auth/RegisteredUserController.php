@@ -38,13 +38,18 @@ class RegisteredUserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try{
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        event(new Registered($user));
+            event(new Registered($user));
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
 
         // Auth::login($user);
 
@@ -60,9 +65,26 @@ class RegisteredUserController extends Controller
 
     public function update(UserRequest $request, User $user)
     {
-        $validated = $request->validated();
-        $user->update($validated);
+        try{
+            $validated = $request->validated();
+            $user->update($validated);
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
 
         return redirect()->route('setting.user.index')->with('success', 'Admin User Info Updated Successfully!');
+    }
+
+    public function destroy(User $user)
+    {
+        try{
+            $user->delete();
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('setting.user.index')->with('success', 'Admin User Successfully Deleted!');
     }
 }

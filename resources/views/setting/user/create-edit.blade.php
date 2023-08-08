@@ -1,4 +1,4 @@
-@section('title', "Edit")
+@section('title', (isset($user)? "Edit" : "Create")." User")
 
 <x-app-layout>
     <x-slot name="header">

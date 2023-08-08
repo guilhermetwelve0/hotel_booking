@@ -23,4 +23,9 @@ class RoomType extends Model
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
 }

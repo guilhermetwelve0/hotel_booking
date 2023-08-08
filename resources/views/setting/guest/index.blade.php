@@ -10,7 +10,7 @@
         <div class="flex justify-between items-center p-4">
             @include('components.back-and-create-btn', [
                 'name' => 'Guest',
-                'route' => 'dashboard',
+                'route' => 'setting.guest.create',
                 'back' => 'setting.index',
                 'create' => true
             ])
@@ -20,6 +20,7 @@
                 $fields = [
                     'name' => 'Name',
                     'email' => 'Email',
+                    'phone' => 'Phone',
                     'created_at' => 'Date Create',
                     'updated_at' => 'Latest Update',
                     'updated_by' => 'Updated By',

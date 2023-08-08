@@ -57,10 +57,10 @@ class User extends Authenticatable
         });
 
         static::updating(function ($model) {
-            $authenticatedUserId = Auth::id();
+            $authUserId = Auth::id();
 
-            if ($authenticatedUserId) {
-                $model->updated_by = $authenticatedUserId;
+            if ($authUserId) {
+                $model->updated_by = $authUserId;
             }
         });
     }

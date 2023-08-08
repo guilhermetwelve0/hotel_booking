@@ -32,7 +32,6 @@ class UserRequest extends FormRequest
         ];
 
         if (!$this->isEditForm()) {
-            $rules['name'][] = 'unique:users';
             $rules['email'][] = 'unique:users';
             $rules += [
                 'password' => ['required', 'confirmed', Rules\Password::defaults()]
@@ -49,7 +48,7 @@ class UserRequest extends FormRequest
             'email.required' => 'The :attribute field is required.',
             'email.email' => 'The :attribute must be a valid email address.',
             'email.unique' => 'The :attribute has already been taken.',
-            'name.unique' => 'The :attribute has already been taken.lol',
+            'name.unique' => 'The :attribute has already been taken.',
             'password.required' => 'The :attribute field is required.',
             'password.confirmed' => 'The :attribute confirmation does not match.',
         ];

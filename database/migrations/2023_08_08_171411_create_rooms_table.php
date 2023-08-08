@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service_facilities', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
-            $table->decimal('price', 15, 2)->default(0);
-            $table->string('icon')->nullable();
+            $table->integer('floor');
+            $table->unsignedInteger('room_no');
+            $table->unsignedBigInteger('type_id');
             $table->timestamps();
+            $table->foreign('type_id')
+                ->references('id')->on('types')
+                ->onDelete('restrict')
+                ->onUpdate('cascade');
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service_facilities');
+        Schema::dropIfExists('rooms');
     }
 };
