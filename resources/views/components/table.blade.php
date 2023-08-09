@@ -29,13 +29,42 @@
                         $idx = array_search($col, array_keys($fields));
                     @endphp
                     <td class="bg-gray-{{ $idx % 2 ? '100' : '50' }} {{$loop->first ? 'font-bold' : ''}}">
-                        @if ($col == 'created_at' || $col == 'updated_at')
-                            {{ $record->$col->format('M d, Y') }}
-                        @elseif ($col == 'updated_by')
-                            {{ $record->updatedByUser->name ?? '---' }}
-                        @else
-                            {{ $record->$col ?? '---' }}
-                        @endif
+                        @switch($col)
+                            @case('created_at')
+                                {{ $record->$col->format('M d, Y') }}
+                                @break
+
+                             @case('updated_at')
+                                {{ $record->$col->format('M d, Y') }}
+                                @break
+
+                            @case('updated_by')
+                                {{ $record->updatedByUser->name ?? '---' }}
+                                @break
+
+                            @case('floor')
+                                {{ ordinal($record->$col) }}
+                                @break
+
+                            @case('room_no')
+                                {{ $record->floor . leadZero($record->room_no) ?? '---' }}
+                                @break
+
+                            @case('room_type')
+                                {{ $record->type->name ?? '---' }}
+                                @break
+
+                            @case('icon')
+                                <i class="fa-solid {{ $record->$col ?? 'fa-ellipsis' }} fa-lg"></i>
+                                @break
+
+                            @case('price')
+                                $ {{ $record->$col ?? 0 }}
+                                @break
+
+                            @default
+                                {{ $record->$col ?? '---' }}
+                        @endswitch
                     </td>
                 @endforeach
                 <td class="bg-gray-{{ count($fields) % 2 ? '100' : '50' }}">

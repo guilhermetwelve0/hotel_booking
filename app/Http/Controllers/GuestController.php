@@ -28,7 +28,7 @@ class GuestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(GuestRequest $request)
     {
         try{
             Guest::create($request->all());
@@ -77,5 +77,13 @@ class GuestController extends Controller
      */
     public function destroy(Guest $guest)
     {
+        try{
+            $guest->delete();
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('setting.guest.index')->with('success', 'Guest Successfully Deleted!');
     }
 }

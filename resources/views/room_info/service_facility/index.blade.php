@@ -6,7 +6,7 @@
     <div class="flex justify-between items-center pb-4">
         @include('components.back-and-create-btn', [
             'name' => 'Service or Facility',
-            'route' => 'dashboard',
+            'route' => 'room-info.service-facility.create',
             'create' => true
         ])
     </div>
@@ -14,9 +14,9 @@
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         @php
             $fields = [
+                'icon' => 'Icon',
                 'name' => 'Name',
                 'price' => 'Cost',
-                'icon' => 'Icon',
             ];
         @endphp
         @include('components.table', [

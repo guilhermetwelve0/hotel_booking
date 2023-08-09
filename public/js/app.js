@@ -49,6 +49,25 @@ $(document).ready(function() {
                 }],
             ],
         });
-    });
+    })
+
+    $('.img-upload').change(function(){
+        file = this.files[0];
+        if (file) {
+            reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview_img').attr('src', e.target.result);
+                $('#preview_img').removeClass('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+    })
+
+    $('.icon-select').change(function(){
+        console.log($(this).val())
+        icon = $(this).val()
+        $('#selected_icon').removeClass()
+        $('#selected_icon').addClass(`fa-solid ${icon} text-white fa-lg`)
+    })
 });
 

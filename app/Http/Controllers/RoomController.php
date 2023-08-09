@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\RoomType;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -12,7 +13,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        $rooms = Room::get();
+        return view('room_info.room.index', compact('rooms'));
     }
 
     /**
@@ -20,7 +22,8 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        $room_types = RoomType::get();
+        return view('room_info.room.create-edit', compact('room_types'));
     }
 
     /**
@@ -28,7 +31,14 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            Room::create($request->all());
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('room_info.room.index')->with('success', 'New Room Successfully Created!');
     }
 
     /**
@@ -44,7 +54,8 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        $room_types = RoomType::get();
+        return view('room_info.room.create-edit', compact('room', 'room_types'));
     }
 
     /**
@@ -52,7 +63,15 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        try{
+            $validated = $request->validated();
+            $room->update($validated);
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('room-info.room.index')->with('success', 'Room Updated Successfully!');
     }
 
     /**
@@ -60,6 +79,13 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        try{
+            $room->delete();
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('room-info.room.index')->with('success', 'Room Successfully Deleted!');
     }
 }

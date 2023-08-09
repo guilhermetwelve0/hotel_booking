@@ -15,17 +15,17 @@
                 <div class="h-full px-3 py-4 overflow-y-auto bg-primary">
                     <ul class="space-y-2 font-medium">
                         <li>
-                            @include('components.sidebar-links',["route"=>"room-info.room-type",
+                            @include('components.sidebar-links',["sidebar_route"=>"room-info.room-type",
                                                                 "name"=>"Room Types",
                                                                 "icon"=>"fa-tags"])
                         </li>
                         <li>
-                            @include('components.sidebar-links',["route"=>"room-info.service-facility",
+                            @include('components.sidebar-links',["sidebar_route"=>"room-info.service-facility",
                                                                 "name"=>"Services & Facilities",
                                                                 "icon"=>"fa-bell-concierge"])
                         </li>
                         <li>
-                            @include('components.sidebar-links',["route"=>"room-info.service-facility",
+                            @include('components.sidebar-links',["sidebar_route"=>"room-info.room",
                                                                 "name"=>"Rooms",
                                                                 "icon"=>"fa-door-closed"])
                         </li>

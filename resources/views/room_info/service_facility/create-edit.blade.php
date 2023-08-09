@@ -1,18 +1,18 @@
 @extends('room_info.layout')
 
-@section('title', "Room Types")
+@section('title', "Services & Facilities")
 
 @section('content')
     <div class="flex justify-between items-center pb-4">
-        @include('components.back-and-create-btn',['back'=> 'room-info.room-type.index'])
+        @include('components.back-and-create-btn',['back'=> 'room-info.service-facility.index'])
     </div>
     <div>
         @php
-            $route = "room-info.room-type";
+            $route = "room-info.service-facility";
             $fields = [
-                'Thumbnail' => [
-                    'name' => 'thumbnail',
-                    'type' => 'file',
+                'Icon' => [
+                    'name' => 'icon',
+                    'type' => 'select',
                     'attr' => ['required']
                 ],
                 'Name' => [
@@ -21,17 +21,12 @@
                 ],
                 'Price' => [
                     'name' => 'price',
-                    'attr' => []
-                ],
-                'Description' => [
-                    'name' => 'description',
-                    'type' => 'textarea',
-                    'attr' => []
+                    'attr' => ['autocomplete']
                 ],
             ];
         @endphp
-        @if (isset($roomType))
-            @include('components.edit-form', [$fields, $route, 'data' => $roomType])
+        @if (isset($serviceFacility))
+            @include('components.edit-form', [$fields, $route, 'data' => $serviceFacility])
         @else
             @include('components.create-form', [$fields, $route])
         @endif

@@ -21,7 +21,7 @@ class ServiceFacilityController extends Controller
      */
     public function create()
     {
-        //
+        return view('room_info.service_facility.create-edit');
     }
 
     /**
@@ -29,7 +29,14 @@ class ServiceFacilityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            serviceFacility::create($request->all());
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('room_info.service_facility.index')->with('success', 'New Service & Facility Successfully Created!');
     }
 
     /**
@@ -45,7 +52,7 @@ class ServiceFacilityController extends Controller
      */
     public function edit(ServiceFacility $serviceFacility)
     {
-        //
+        return view('room_info.service_facility.create-edit', compact('serviceFacility'));
     }
 
     /**
@@ -53,7 +60,16 @@ class ServiceFacilityController extends Controller
      */
     public function update(Request $request, ServiceFacility $serviceFacility)
     {
-        //
+        try{
+            // $validated = $request->validated();
+            $serviceFacility->update($request->all());
+        }
+        catch(\Exception $e){
+            dd($e);
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('room-info.service-facility.index')->with('success', 'Service & Facility Updated Successfully!');
     }
 
     /**
@@ -61,6 +77,13 @@ class ServiceFacilityController extends Controller
      */
     public function destroy(ServiceFacility $serviceFacility)
     {
-        //
+        try{
+            $serviceFacility->delete();
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('room-info.service-facility.index')->with('success', 'Service & Facility Successfully Deleted!');
     }
 }

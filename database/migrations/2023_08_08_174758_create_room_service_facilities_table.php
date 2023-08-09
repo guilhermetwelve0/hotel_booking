@@ -21,7 +21,8 @@ return new class extends Migration
                 ->references('id')->on('rooms')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->foreign('service_id')
+
+            $table->foreign('service_facility_id')
                 ->references('id')->on('service_facilities')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');

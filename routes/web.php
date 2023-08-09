@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomTypeController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ServiceFacilityController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('room-info')->name('room-info.')->group(function (){
         Route::resource('room-type', RoomTypeController::class);
+        Route::resource('room', RoomController::class);
         Route::resource('service-facility', ServiceFacilityController::class);
     });
 
