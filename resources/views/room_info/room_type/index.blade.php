@@ -6,7 +6,7 @@
     <div class="flex justify-between items-center pb-4">
         @include('components.back-and-create-btn', [
             'name' => 'Room Type',
-            'route' => 'dashboard',
+            'route' => 'room-info.room-type.create',
             'create' => true
         ])
     </div>

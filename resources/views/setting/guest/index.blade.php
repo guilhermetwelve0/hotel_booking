@@ -1,3 +1,4 @@
+@section('title', "Guest List")
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
@@ -9,8 +10,9 @@
         <div class="flex justify-between items-center p-4">
             @include('components.back-and-create-btn', [
                 'name' => 'Guest',
-                'route' => 'dashboard',
+                'route' => 'setting.guest.create',
                 'back' => 'setting.index',
+                'create' => true
             ])
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -18,6 +20,7 @@
                 $fields = [
                     'name' => 'Name',
                     'email' => 'Email',
+                    'phone' => 'Phone',
                     'created_at' => 'Date Create',
                     'updated_at' => 'Latest Update',
                     'updated_by' => 'Updated By',

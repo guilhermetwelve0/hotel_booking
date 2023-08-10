@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->integer('price')->default(0);
+            $table->decimal('price', 15, 2)->default(0);
             $table->string('icon')->nullable();
             $table->timestamps();
         });

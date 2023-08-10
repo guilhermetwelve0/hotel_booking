@@ -4,7 +4,7 @@
             {{ __('Room Info') }}<i class="fa-solid fa-dungeon ms-3"></i>
         </h2>
     </x-slot>
-        <div class="relative h-screen">
+        <div class="relative min-h-screen">
             <button data-drawer-target="room_info_sidebar" data-drawer-toggle="room_info_sidebar" aria-controls="room_info_sidebar" type="button" class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                 <span class="sr-only">Open sidebar</span>
                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -15,36 +15,34 @@
                 <div class="h-full px-3 py-4 overflow-y-auto bg-primary">
                     <ul class="space-y-2 font-medium">
                         <li>
-                            @include('components.sidebar-links',["route"=>"room-info.room-type.index",
+                            @include('components.sidebar-links',["sidebar_route"=>"room-info.room-type",
                                                                 "name"=>"Room Types",
                                                                 "icon"=>"fa-tags"])
                         </li>
                         <li>
-                            @include('components.sidebar-links',["route"=>"room-info.service-facility.index",
+                            @include('components.sidebar-links',["sidebar_route"=>"room-info.service-facility",
                                                                 "name"=>"Services & Facilities",
                                                                 "icon"=>"fa-bell-concierge"])
                         </li>
                         <li>
-                            @include('components.sidebar-links',["route"=>"dashboard",
+                            @include('components.sidebar-links',["sidebar_route"=>"room-info.room",
                                                                 "name"=>"Rooms",
                                                                 "icon"=>"fa-door-closed"])
                         </li>
                         <li>
-                            @include('components.sidebar-links',["route"=>"dashboard",
-                                                                    "name"=>"Branches",
+                            @include('components.sidebar-links',["name"=>"Branches",
                                                                     "icon"=>"fa-sitemap",
                                                                     "disabled"=>true])
                         </li>
                         <li>
-                            @include('components.sidebar-links',["route"=>"dashboard",
-                                                                "name"=>"Buildings",
+                            @include('components.sidebar-links',["name"=>"Buildings",
                                                                 "icon"=>"fa-building",
                                                                 "disabled"=>true])
                         </li>
                     </ul>
                 </div>
             </aside>
-            <section class="room-info-section p-5 sm:p-10 ">
+            <section class="room-info-section p-5 sm:p-10">
                 @yield('content')
             </section>
         </div>

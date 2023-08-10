@@ -10,7 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use App\Http\Requests\UserRequest;
+
 use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
@@ -18,7 +19,7 @@ class RegisteredUserController extends Controller
 
     public function index()
     {
-        $users = User::get();
+        $users = User::orderBy('created_at')->get();
         return view('setting.user.index', compact('users'));
     }
     /**
@@ -26,7 +27,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        // return view('auth.register');
+        return view('setting.user.create-edit');
     }
 
     /**
@@ -34,25 +36,55 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(UserRequest $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        try{
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+            event(new Registered($user));
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
 
-        event(new Registered($user));
+        // Auth::login($user);
 
-        Auth::login($user);
+        // return redirect(RouteServiceProvider::HOME);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('setting.user.index')->with('success', 'New Admin User Successfully Created!');
     }
 
+    public function edit(User $user)
+    {
+        return view('setting.user.create-edit', compact('user'));
+    }
+
+    public function update(UserRequest $request, User $user)
+    {
+        try{
+            $validated = $request->validated();
+            $user->update($validated);
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('setting.user.index')->with('success', 'Admin User Info Updated Successfully!');
+    }
+
+    public function destroy(User $user)
+    {
+        try{
+            $user->delete();
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('setting.user.index')->with('success', 'Admin User Successfully Deleted!');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guest;
 use Illuminate\Http\Request;
+use App\Http\Requests\GuestRequest;
 
 class GuestController extends Controller
 {
@@ -21,15 +22,22 @@ class GuestController extends Controller
      */
     public function create()
     {
-        //
+        return view('setting.guest.create-edit');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(GuestRequest $request)
     {
-        //
+        try{
+            Guest::create($request->all());
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('setting.guest.index')->with('success', 'New Guest Successfully Created!');
     }
 
     /**
@@ -45,15 +53,23 @@ class GuestController extends Controller
      */
     public function edit(Guest $guest)
     {
-        dd($guest);
+        return view('setting.guest.create-edit', compact('guest'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Guest $guest)
+    public function update(GuestRequest $request, Guest $guest)
     {
-        //
+        try{
+            $validated = $request->validated();
+            $guest->update($validated);
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('setting.guest.index')->with('success', 'Guest Info Updated Successfully!');
     }
 
     /**
@@ -61,5 +77,13 @@ class GuestController extends Controller
      */
     public function destroy(Guest $guest)
     {
+        try{
+            $guest->delete();
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('setting.guest.index')->with('success', 'Guest Successfully Deleted!');
     }
 }

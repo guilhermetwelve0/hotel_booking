@@ -28,7 +28,6 @@
 .dataTables_wrapper .dataTables_length select {
     background-image: none !important;
 }
-
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter,
 .dataTables_wrapper .dataTables_info,
@@ -36,15 +35,59 @@
 .dataTables_wrapper .dataTables_paginate {
     margin: 10px 20px;
 }
-
 .dataTables_wrapper {
     color: #13293D;
 }
-
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    border-radius: 10px !important;
+    border-radius: 7.5px !important;
 }
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    padding: 0.25em 0.75em !important;
+}
+.hover-table:hover td{
+    background-color: #13293D11;
+}
+
+/* Toast */
+.delete-toast{
+    border-radius: 5px !important;
+}
+.delete-toast .iziToast-body, .delete-toast .iziToast-texts{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+}
+.delete-toast .iziToast-message{
+    padding-block: 1em !important;
+}
+.delete-toast .iziToast-buttons button{
+    padding: 5px 20px !important;
+    margin-inline: 10px !important;
+}
+
+/* Landing Page */
+section.web-banner{
+    --nav-h: 64px;
+    max-height: calc(100vh - (var(--nav-h) + 70px));
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+form.room-search {
+    top: 0;
+    left: 50%;
+    translate: -50% var(--search-pos, -25%);
+}
+.stars{
+    padding-top: var(--star-top, 150px);
+    padding-bottom: 25px
+}
+.card{
+    background-color: white;
+}
+
+/* Responsive Based on Tailwind */
 
 /* sm */
 @media (min-width: 640px) {
@@ -54,13 +97,26 @@
 }
 
 /* md */
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+    :root{
+        --star-top:40px;
+        --search-pos: -75%;
+    }
+}
 
 /* lg */
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+    :root{
+        --star-top: 30px;
+    }
+}
 
 /* xl */
 @media (min-width: 1280px) {}
 
 /* 2xl */
 @media (min-width: 1536px) {}
+
+@media (orientation: landscape) {}
+
+@media (orientation: portrait) {}

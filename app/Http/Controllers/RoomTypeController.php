@@ -21,7 +21,7 @@ class RoomTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('room_info.room_type.create-edit');
     }
 
     /**
@@ -29,7 +29,14 @@ class RoomTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            RoomType::create($request->all());
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('room_info.room_type.index')->with('success', 'New Room Type Successfully Created!');
     }
 
     /**
@@ -37,7 +44,7 @@ class RoomTypeController extends Controller
      */
     public function show(RoomType $roomType)
     {
-        //
+        dd($roomType);
     }
 
     /**
@@ -45,7 +52,7 @@ class RoomTypeController extends Controller
      */
     public function edit(RoomType $roomType)
     {
-        dd($roomType);
+        return view('room_info.room_type.create-edit', compact('roomType'));
     }
 
     /**
@@ -53,7 +60,15 @@ class RoomTypeController extends Controller
      */
     public function update(Request $request, RoomType $roomType)
     {
-        //
+        try{
+            $validated = $request->validated();
+            $roomType->update($validated);
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('room-info.room-type.index')->with('success', 'Room Type Updated Successfully!');
     }
 
     /**
@@ -61,6 +76,13 @@ class RoomTypeController extends Controller
      */
     public function destroy(RoomType $roomType)
     {
-        //
+        try{
+            $roomType->delete();
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('room-info.room-type.index')->with('success', 'Room Type Successfully Deleted!');
     }
 }
