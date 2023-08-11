@@ -30,6 +30,7 @@
                 'records' => $guests,
                 'fields' => $fields,
                 'route' => 'setting.guest',
+                'view' => true,
             ])
         </div>
     </div>

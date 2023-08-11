@@ -6,8 +6,8 @@
             <p class="text-gray-600 mb-2">$300</p>
         </div>
         <div class="flex space-x-2 mb-4">
-          <span class="px-2 py-1 bg-gray-400 text-white rounded-full text-xs">Service 1</span>
-          <span class="px-2 py-1 bg-gray-400 text-white rounded-full text-xs">Service 2</span>
+          <span class="px-2 py-1 bg-blue-400 text-white rounded-full text-xs">Service 1</span>
+          <span class="px-2 py-1 bg-blue-400 text-white rounded-full text-xs">Service 2</span>
         </div>
         <button class="bg-primary hover:bg-gray-600 text-white px-4 py-2 rounded-lg w-full">Select for Booking</button>
         <p class="text-green-500 text-xs mt-2">Only 1 room left</p>

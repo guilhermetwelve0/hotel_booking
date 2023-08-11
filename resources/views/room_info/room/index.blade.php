@@ -1,6 +1,6 @@
 @extends('room_info.layout')
 
-@section('title', "Room Types")
+@section('title', "Rooms")
 
 @section('content')
     <div class="flex justify-between items-center pb-4">
@@ -15,7 +15,8 @@
             $fields = [
                 "room_no" => "Room No",
                 "floor" => "Floor",
-                "room_type" => "Room Type"
+                "room_type" => "Room Type",
+                "service_facility" => "Services & Facilities"
             ];
         @endphp
         @include('components.table', ["records" => $rooms,

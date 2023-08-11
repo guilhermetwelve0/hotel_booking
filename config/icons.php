@@ -77,4 +77,8 @@ return [
         'name' => "People Line",
         'icon' => "fa-people-line"
     ],
+    [
+        'name' => "Burger",
+        'icon' => "fa-burger"
+    ],
 ];

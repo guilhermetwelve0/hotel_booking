@@ -5,6 +5,7 @@ use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ServiceFacilityController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\ServiceFacility;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('web.landing');
-});
+Route::get('/', [PageController::class,'landing'])->name('landing');
+Route::get('/about', [PageController::class,'about'])->name('about');
+Route::get('/contact', [PageController::class,'contact'])->name('contact');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -12,8 +12,7 @@ class Room extends Model
     protected $fillable = [
         'floor',
         'room_no',
-        'phone',
-        'updated_by'
+        'room_type_id',
     ];
 
     public function type()

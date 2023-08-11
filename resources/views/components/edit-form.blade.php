@@ -1,5 +1,5 @@
 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-    <form class="max-w-xl" action="{{ route("$route.update", $data->id) }}" method="post">
+    <form class="max-w-xl" action="{{ route("$route.update", $data->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
         @foreach ($fields as $label => $input)
@@ -14,7 +14,7 @@
                 @case('textarea')
                     <div class="pb-5">
                         <x-input-label for="{{ $name }}" :value="$label" :required="$required"/>
-                        <textarea name="{{$name}}" rows="4" class="block p-2 w-full text-sm mt-1 text-gray-900 bg-white rounded-md border border-gray-300 focus:ring-primary focus:border-primary"></textarea>
+                        <textarea name="{{$name}}" rows="4" class="block p-2 w-full text-sm mt-1 text-gray-900 bg-white rounded-md border border-gray-300 focus:ring-primary focus:border-primary">{{$data->$name}}</textarea>
                         <x-input-error class="mt-2" :messages="$errors->get($name)" />
                     </div>
                     @break
@@ -22,9 +22,10 @@
                 @case('file')
                     <div class="pb-5">
                         <x-input-label for="{{ $name }}" :value="$label" :required="$required"/>
-                        <input  name="{{ $name }}" type="{{ $type }}"
+                        <input type="hidden" name="{{ $name }}" value="{{ $data->thumbnail }}" id="old_img">
+                        <input  name="{{ $name }}" type="{{ $type }}" value="{{$data->thumbnail}}"
                             class="img-upload block w-full text-md text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-white focus:outline-none">
-                        <img src="" alt="{{$name}}" class="mt-3 rounded-md" id="preview_img">
+                        <img src="{{asset("$data->thumbnail")}}" alt="{{$name}}" class="mt-3 rounded-md" id="preview_img">
                         <x-input-error class="mt-2" :messages="$errors->get($name)" />
                     </div>
                     @break
@@ -40,10 +41,22 @@
                                 <select id="{{ $name }}" name="{{ $name }}"  class="icon-select bg-white border border-gray-300 text-gray-900 text-sm rounded-r-md border-l-gray-100 border-l-2 focus:ring-primary focus:border-primary block w-full p-2.5">
                                     <option selected disabled>Choose an icon</option>
                                     @foreach (config('icons') as $icon)
-                                        <option value="{{$icon['icon']}}" {{$icon['icon'] == $data->icon}}>{{$icon['name']}}</option>
+                                        <option value="{{$icon['icon']}}" {{$icon['icon'] == $data->icon ? 'selected' : ''}}>{{$icon['name']}}</option>
                                     @endforeach
                                 </select>
                             </div>
+                        @elseif(isset($input['multiple']))
+                            <select id="multiple-select" multiple name="{{$name}}[]" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full">
+                                @foreach($input['select_obj'] as $val)
+                                    @php
+                                        $select = '';
+                                        foreach($data->services as $service){
+                                            if($val->id == $service->id) $select = "selected";
+                                        }
+                                    @endphp
+                                    <option value="{{$val->id}}" {{$select}}>{{$val->name}}</option>
+                                @endforeach
+                            </select>
                         @else
                             <select id="{{ $name }}" name="{{ $name }}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full p-2.5">
                                 <option selected disabled>Choose a {{ $label }}</option>

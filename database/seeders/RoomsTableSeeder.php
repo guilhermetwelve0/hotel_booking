@@ -23,7 +23,7 @@ class RoomsTableSeeder extends Seeder
                 $room = [
                     'floor' => $i,
                     'room_no' => str_pad($j, 2, '0', STR_PAD_LEFT),
-                    'room_type_id' => rand(1, 10)
+                    'room_type_id' => rand(1, 10),
                 ];
                 $rooms[] = $room;
             }

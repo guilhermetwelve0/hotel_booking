@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             GuestsTableSeeder::class,
             ServiceFacilitiesTableSeeder::class,
             RoomsTableSeeder::class,
+            RoomServiceFacilitySeeder::class,
         ]);
     }
 }

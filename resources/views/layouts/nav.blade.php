@@ -19,10 +19,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
                         {{ __('Booking') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
                         {{ __('About') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*')">
+                    <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
                         {{ __('Contact') }}
                     </x-nav-link>
                 </div>
@@ -47,10 +47,10 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
                 {{ __('Booking') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
+            <x-responsive-nav-link :href="route('about')" :active="request()->routeIs('about')">
                 {{ __('About') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*')">
+            <x-responsive-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
                 {{ __('Contact') }}
             </x-responsive-nav-link>
         </div>

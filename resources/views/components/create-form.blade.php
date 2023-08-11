@@ -1,5 +1,5 @@
 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-    <form class="max-w-xl" action="{{ route("$route.store") }}" method="post">
+    <form class="max-w-xl" action="{{ route("$route.store") }}" method="post" enctype="multipart/form-data">
         @csrf
         @foreach ($fields as $label => $input)
             @php
@@ -21,7 +21,7 @@
                 @case('file')
                     <div class="pb-5">
                         <x-input-label for="{{ $name }}" :value="$label" :required="$required"/>
-                        <input  name="{{ $name }}" type="{{ $type }}"
+                        <input name="{{ $name }}" type="{{ $type }}"
                             class="img-upload block w-full text-lg text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-white focus:outline-none">
                         <img src="" alt="{{$name}}" class="hidden mt-3 rounded-md" id="preview_img">
                         <x-input-error class="mt-2" :messages="$errors->get($name)" />
@@ -42,6 +42,12 @@
                                     @endforeach
                                 </select>
                             </div>
+                        @elseif(isset($input['multiple']))
+                            <select id="multiple-select" multiple name="{{$name}}[]" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full">
+                                @foreach($input['select_obj'] as $val)
+                                    <option value="{{$val->id}}">{{$val->name}}</option>
+                                @endforeach
+                            </select>
                         @else
                             <select id="{{ $name }}" name="{{ $name }}" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full p-2.5">
                                 <option selected disabled>Choose a {{ $label }}</option>

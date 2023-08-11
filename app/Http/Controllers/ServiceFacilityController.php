@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ServiceFacility;
 use Illuminate\Http\Request;
+use App\Http\Requests\ServiceFacilityRequest;
 
 class ServiceFacilityController extends Controller
 {
@@ -27,10 +28,10 @@ class ServiceFacilityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ServiceFacilityRequest $request)
     {
         try{
-            serviceFacility::create($request->all());
+            ServiceFacility::create($request->all());
         }
         catch(\Exception $e){
             return redirect()->back()->with('error', 'Something Went Wrong!');
@@ -58,11 +59,11 @@ class ServiceFacilityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ServiceFacility $serviceFacility)
+    public function update(ServiceFacilityRequest $request, ServiceFacility $serviceFacility)
     {
         try{
-            // $validated = $request->validated();
-            $serviceFacility->update($request->all());
+            $validated = $request->validated();
+            $serviceFacility->update($validated);
         }
         catch(\Exception $e){
             dd($e);

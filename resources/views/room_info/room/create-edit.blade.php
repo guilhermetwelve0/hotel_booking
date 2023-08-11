@@ -26,6 +26,13 @@
                     'attr' => ['required'],
                     'select_obj' => $room_types
                 ],
+                'Services or Facilities' => [
+                    'name' => 'services_facilities',
+                    'type' => 'select',
+                    'multiple' => true,
+                    'attr' => [],
+                    'select_obj' => $services_facilities
+                ],
             ];
         @endphp
         @if (isset($room))

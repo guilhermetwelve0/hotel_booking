@@ -59,7 +59,21 @@
                                 @break
 
                             @case('price')
-                                $ {{ $record->$col ?? 0 }}
+                                $&nbsp;{{ $record->$col ?? 0 }}
+                                @break
+
+                            @case('thumbnail')
+                                <a href="{{asset($record->$col)}}" class="underline text-blue-600">{{$record->$col ?? "/"}}</a>
+                                @break
+
+                            @case('service_facility')
+                                @forelse($record->services as $service)
+                                    <span class="rounded-full bg-blue-400 text-white py-1 px-4 m-1">
+                                        <i class="fa-solid {{$service->icon}}"></i>&nbsp;{{$service->name}}
+                                    </span>
+                                @empty
+                                    ---
+                                @endforelse
                                 @break
 
                             @default
@@ -67,7 +81,7 @@
                         @endswitch
                     </td>
                 @endforeach
-                <td class="bg-gray-{{ count($fields) % 2 ? '100' : '50' }}">
+                <td class="bg-gray-{{ count($fields) % 2 ? '100' : '50' }} w-[150px]">
                     @php
                         $edit_route = $route;
                         if (auth()->user()->id == $record->id) {
