@@ -6,6 +6,8 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ServiceFacilityController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\ServiceFacility;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +27,10 @@ Route::get('/', [PageController::class,'landing'])->name('landing');
 Route::get('/about', [PageController::class,'about'])->name('about');
 Route::get('/contact', [PageController::class,'contact'])->name('contact');
 
+Route::prefix('/ajax')->name('ajax.')->controller(AjaxController::class)->group(function () {
+    Route::get('/search-rooms', 'searchRooms')->name('search-rooms');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -35,6 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::resource('booking', BookingController::class);
 
     Route::prefix('room-info')->name('room-info.')->group(function (){
         Route::resource('room-type', RoomTypeController::class);

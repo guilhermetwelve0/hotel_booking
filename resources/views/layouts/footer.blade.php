@@ -3,7 +3,7 @@
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0 flex flex-col justify-between">
-              <a href="https://flowbite.com/" class="flex items-center">
+              <a href="{{route('login')}}" class="flex items-center">
                   <img src="{{asset('img/crown.png')}}" class="h-8 mr-3" alt="FlowBite Logo" />
                   <span class="self-center text-2xl font-semibold whitespace-nowrap text-accent cinzel-decorative">Royal Crown</span>
               </a>

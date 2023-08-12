@@ -17,13 +17,13 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
-                        {{ __('Reception') }}
+                    <x-nav-link :href="route('booking.index')" :active="request()->routeIs('booking.*')">
+                        {{ __('Booking') }}
                     </x-nav-link>
                     <x-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
                         {{ __('Room Info') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*')">
+                    <x-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*') || request()->routeIs('profile.*') ">
                         {{ __('Setting') }}
                     </x-nav-link>
                 </div>
@@ -81,13 +81,13 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
-                {{ __('Reception') }}
+            <x-responsive-nav-link :href="route('booking.index')" :active="request()->routeIs('booking.*')">
+                {{ __('Booking') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
                 {{ __('Room Info') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*')">
+            <x-responsive-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*') || request()->routeIs('profile.*')">
                 {{ __('Setting') }}
             </x-responsive-nav-link>
         </div>

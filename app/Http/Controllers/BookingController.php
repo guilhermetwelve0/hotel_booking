@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Guest;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -12,7 +13,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::orderBy('check_in_date', 'desc')->orderBy('check_out_date')->get();
+        return view('booking.index', compact('bookings'));
     }
 
     /**
@@ -20,7 +22,8 @@ class BookingController extends Controller
      */
     public function create()
     {
-        //
+        $guests = Guest::get();
+        return view('booking.create', compact('guests'));
     }
 
     /**
@@ -28,7 +31,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('store');
     }
 
     /**
@@ -36,7 +39,7 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        dd('show');
     }
 
     /**
@@ -44,7 +47,8 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        //
+        dd('edit');
+
     }
 
     /**
@@ -52,7 +56,8 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+        dd('update');
+
     }
 
     /**
@@ -60,6 +65,7 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
-        //
+        dd('destroy');
+
     }
 }

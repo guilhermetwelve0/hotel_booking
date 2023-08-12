@@ -17,6 +17,10 @@ return new class extends Migration
             $table->uuid('guest_id');
             $table->date('check_in_date');
             $table->date('check_out_date');
+            $table->enum('type', ['web', 'call', 'counter'])->default('web');
+            $table->integer('status')->default(0);
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

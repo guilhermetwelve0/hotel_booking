@@ -21,6 +21,7 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach ($records as $i => $record)
             <tr class="border-b border-gray-200 hover-table">
                 <td class="bg-gray-100">{{ $i + 1 }}</td>
@@ -29,59 +30,47 @@
                         $idx = array_search($col, array_keys($fields));
                     @endphp
                     <td class="bg-gray-{{ $idx % 2 ? '100' : '50' }} {{$loop->first ? 'font-bold' : ''}}">
-                        @switch($col)
-                            @case('created_at')
-                                {{ $record->$col->format('M d, Y') }}
-                                @break
+                        @if(in_array($col, ['created_at', 'updated_at', 'check_in_date', 'check_out_date']))
+                            {{ dateFormat($record->$col, 'M d, Y') }}
 
-                             @case('updated_at')
-                                {{ $record->$col->format('M d, Y') }}
-                                @break
+                        @elseif(in_array($col, ['updatedByUser', 'guest', 'roomType']))
+                            {{ $record->$col->name ?? '---' }}
 
-                            @case('updated_by')
-                                {{ $record->updatedByUser->name ?? '---' }}
-                                @break
+                        @elseif($col === 'floor')
+                            {{ ordinal($record->$col) }}
 
-                            @case('floor')
-                                {{ ordinal($record->$col) }}
-                                @break
+                        @elseif($col === 'room_no')
+                            {{ $record->floor . leadZero($record->room_no) ?? '---' }}
 
-                            @case('room_no')
-                                {{ $record->floor . leadZero($record->room_no) ?? '---' }}
-                                @break
+                        @elseif($col === 'icon')
+                            <i class="fa-solid {{ $record->$col ?? 'fa-ellipsis' }} fa-lg"></i>
 
-                            @case('room_type')
-                                {{ $record->type->name ?? '---' }}
-                                @break
+                        @elseif($col === 'status')
+                            @php
+                                $idx = $record->$col;
+                            @endphp
+                            {{ config("status.status_label.$idx") }}
 
-                            @case('icon')
-                                <i class="fa-solid {{ $record->$col ?? 'fa-ellipsis' }} fa-lg"></i>
-                                @break
+                        @elseif($col === 'price' || $col === 'total')
+                            $&nbsp;{{ $record->$col ?? 0 }}
 
-                            @case('price')
-                                $&nbsp;{{ $record->$col ?? 0 }}
-                                @break
+                        @elseif($col === 'thumbnail')
+                            <a href="{{asset($record->$col)}}" class="underline text-blue-600">{{$record->$col ?? "/"}}</a>
 
-                            @case('thumbnail')
-                                <a href="{{asset($record->$col)}}" class="underline text-blue-600">{{$record->$col ?? "/"}}</a>
-                                @break
-
-                            @case('service_facility')
-                                @forelse($record->services as $service)
-                                    <span class="rounded-full bg-blue-400 text-white py-1 px-4 m-1">
-                                        <i class="fa-solid {{$service->icon}}"></i>&nbsp;{{$service->name}}
-                                    </span>
-                                @empty
-                                    ---
-                                @endforelse
-                                @break
-
-                            @default
-                                {{ $record->$col ?? '---' }}
-                        @endswitch
+                        @elseif($col === 'service_facility')
+                            @forelse($record->services as $service)
+                                <span class="rounded-full bg-blue-400 text-white py-1 px-4 m-1">
+                                    <i class="fa-solid {{$service->icon}}"></i>&nbsp;{{$service->name}}
+                                </span>
+                            @empty
+                                ---
+                            @endforelse
+                        @else
+                            {{ $record->$col ?? '---' }}
+                        @endif
                     </td>
                 @endforeach
-                <td class="bg-gray-{{ count($fields) % 2 ? '100' : '50' }} w-[150px]">
+                <td class="bg-gray-{{ count($fields) % 2 ? '100' : '50' }} min-w-[111px]">
                     @php
                         $edit_route = $route;
                         if (auth()->user()->id == $record->id) {

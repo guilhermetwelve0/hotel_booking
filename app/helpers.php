@@ -24,3 +24,8 @@ function ordinal($number) {
 function leadZero($num){
     return str_pad($num, 2, '0', STR_PAD_LEFT);
 }
+
+function dateFormat($date, $format){
+    return \Carbon\Carbon::parse($date)->format($format);
+}
+

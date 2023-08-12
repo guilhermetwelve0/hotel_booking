@@ -1,4 +1,4 @@
-    <div class="bg-accent rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:rotate-2">
+    <div class="bg-gray-100 rounded-md shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:rotate-2">
       <img src="{{asset('img/hotel-room.png')}}" alt="Room Image" class="w-full h-48 object-cover rounded-t-lg">
       <div class="p-4">
         <div class="flex justify-between">

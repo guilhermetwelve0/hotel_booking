@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Guest;
 
-class GuestsTableSeeder extends Seeder
+class GuestsSeeder extends Seeder
 {
     /**
      * Run the database seeds.

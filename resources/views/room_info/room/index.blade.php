@@ -15,7 +15,7 @@
             $fields = [
                 "room_no" => "Room No",
                 "floor" => "Floor",
-                "room_type" => "Room Type",
+                "roomType" => "Room Type",
                 "service_facility" => "Services & Facilities"
             ];
         @endphp
