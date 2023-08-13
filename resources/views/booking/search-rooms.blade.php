@@ -1,6 +1,6 @@
 <div class="max-w-xl">
     <div class="flex flex-col sm:flex-row justify-between">
-        <h1 class="text-lg font-medium text-gray-900">Select Rooms</h1>
+        <h1 class="text-lg font-medium text-gray-900">Search Rooms</h1>
         <div class="text-end pt-3">
             <button type="button" id="find_room" class="text-sm border border-primary rounded-md py-1 px-2 hover:text-white hover:bg-primary">
                 <i class="fa-solid fa-search"></i>
@@ -16,7 +16,7 @@
                         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                     </svg>
                 </div>
-                <input required name="check_in_out" id="check_in" type="text" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Check in date">
+                <input required name="check_in_date" id="check_in" autocomplete="off" type="text" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Check in date">
             </div>
                 <span class="mx-3 text-gray-500 hidden sm:block">to</span>
             <div class="relative w-full">
@@ -25,9 +25,12 @@
                         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                     </svg>
                 </div>
-                <input required name="check_out_out" id="check_out" type="text" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Check out date">
+                <input required name="check_out_date" id="check_out" autocomplete="off" type="text" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5" placeholder="Check out date">
             </div>
         </div>
+        <x-input-error class="mt-2" :messages="$errors->get('check_in_date')" />
+        <x-input-error class="mt-2" :messages="$errors->get('check_out_date')" />
+
     </div>
     <div class="pt-3 relative">
         <x-input-label for="type" :value="__('Room Type')" />

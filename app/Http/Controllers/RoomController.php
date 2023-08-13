@@ -35,7 +35,6 @@ class RoomController extends Controller
 
     public function store(RoomRequest $request)
     {
-        // dd($request);
         try{
             $exist = Room::where('floor', $request->floor)->where('room_no', $request->room_no)->first();
             if(!$exist){

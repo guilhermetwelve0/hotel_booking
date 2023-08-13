@@ -19,7 +19,9 @@ class Booking extends Model
         'total',
         'guest_id',
         'check_in_date',
-        'check_out_date'
+        'check_out_date',
+        'type',
+        'status'
     ];
 
     protected static function boot()

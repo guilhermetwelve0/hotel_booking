@@ -8,20 +8,18 @@
     </x-slot>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-7 justify-center">
-        <div class="flex justify-end items-center">
+        <div class="flex justify-between items-center px-3">
             @include('components.back-and-create-btn', [
                 'custom_name' => 'Make Booking',
                 'route' => 'booking.create',
                 'create' => true,
-                'disabled_back' => true,
-                'deleted_at_records' => ["Canceled List", "booking.canceled-list"]
+                'back' => 'booking.index'
             ])
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             @php
                 $fields = [
                     'guest' => 'Guest',
-                    'rooms' => 'Rooms',
                     'check_in_date' => 'Check In',
                     'check_out_date' => 'Check Out',
                     'type' => 'Registration Type',
@@ -33,7 +31,8 @@
                 'records' => $bookings,
                 'fields' => $fields,
                 'route' => 'booking',
-                'remove_edit_del' => true
+                'remove_edit_del' => true,
+                'no_action' => true
             ])
         </div>
     </div>

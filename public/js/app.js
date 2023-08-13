@@ -74,45 +74,5 @@ $(document).ready(function() {
     $('#multiple-select').selectize({
         plugins: ["restore_on_backspace", "clear_button", "remove_button"],
     });
-
-    $('#guest_select').selectize();
-
-    $('#guest_select').change(function() {
-        guestData = $('#guestData').data('guests')
-        idx = $(this).val()
-
-        console.log(guestData[idx].id)
-
-        $('#emailInput').val(guestData[idx].email)
-        $('#phoneInput').val(guestData[idx].phone)
-        $('#idInput').val(guestData[idx].id)
-    })
-
-    $('#find_room').click(function() {
-        event.preventDefault();
-
-        startDate = $("#check_in").val();
-        endDate = $("#check_out").val();
-        $.ajax({
-            url: "/ajax/search-rooms", // Replace with your API endpoint
-            type: "GET",
-            data: {
-                check_in: startDate,
-                check_out: endDate
-            },
-            dataType: "json", // The expected data type of the response
-            success: function (response) {
-                if(response.length > 0){
-                    console.log(response)
-                } else{
-                    console.log("empty")
-                }
-            },
-            error: function (xhr, status, error) {
-                // Handle errors
-                // $("#result").html("An error occurred: " + error);
-            }
-        });
-    })
 });
 

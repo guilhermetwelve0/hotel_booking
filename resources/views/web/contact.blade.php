@@ -31,7 +31,8 @@
                 </div>
                 <div>
                     <h2 class="text-2xl font-semibold mb-4 text-secondary">Get In Touch</h2>
-                    <form action="#" method="POST">
+                    <form action="{{route('guest-info-add')}}" method="POST">
+                        @csrf
                         <div class="mb-4">
                             <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
                             <input type="text" id="name" name="name" placeholder="Full Name" class="mt-1 p-2 w-full border rounded-md">

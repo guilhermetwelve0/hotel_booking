@@ -42,14 +42,23 @@
                         @elseif($col === 'room_no')
                             {{ $record->floor . leadZero($record->room_no) ?? '---' }}
 
+                        @elseif($col === 'rooms')
+                            @foreach ($record->$col as $room)
+                            {{ $room->floor . (leadZero($room->room_no) ?? '---') . ($loop->last ? '' : ',')}}
+                            @endforeach
+
                         @elseif($col === 'icon')
                             <i class="fa-solid {{ $record->$col ?? 'fa-ellipsis' }} fa-lg"></i>
 
                         @elseif($col === 'status')
                             @php
                                 $idx = $record->$col;
+                                $color = config("status.status_color.$idx");
                             @endphp
-                            {{ config("status.status_label.$idx") }}
+                            <span class="status-cols text-gray-600 bg-{{$color}}-200 border border-{{$color}}-400 flex items-center py-1 h-full w-full rounded-md">
+                                <i class="fa-solid fa-{{config("status.status_icon.$idx")}} mx-3"></i>
+                                {{ config("status.status_label.$idx") }}
+                            </span>
 
                         @elseif($col === 'price' || $col === 'total')
                             $&nbsp;{{ $record->$col ?? 0 }}
@@ -73,26 +82,86 @@
                 <td class="bg-gray-{{ count($fields) % 2 ? '100' : '50' }} min-w-[111px]">
                     @php
                         $edit_route = $route;
-                        if (auth()->user()->id == $record->id) {
+                        $admin = auth()->user()->id ?? null;
+                        if ($admin == $record->id) {
                             $edit_route = 'profile';
                         }
                     @endphp
-                    <a href='{{ route("$edit_route.edit", $record->id) }}' class="px-1 mx-1" title="Edit">
-                        <i class="fa-solid fa-pen-to-square fa-lg text-secondary"></i>
-                    </a>
+                    @if (!isset($remove_edit_del))
+                        <a href='{{ route("$edit_route.edit", $record->id) }}' class="px-1 mx-1" title="Edit">
+                            <i class="fa-solid fa-pen-to-square fa-lg text-secondary"></i>
+                        </a>
 
-                    <form action="{{ route("$edit_route.destroy", $record->id) }}" id="delete-form-{{$i}}" class="inline" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" class="px-1 mx-1 delete-btn" title="Delete"
-                        data-target="{{$i}}">
-                            <i class="fa-solid fa-trash-can fa-lg text-rose-400"></i>
-                        </button>
-                    </form>
+                        <form action="{{ route("$edit_route.destroy", $record->id) }}" id="delete-form-{{$i}}" class="inline" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" class="px-1 mx-1 delete-btn" title="Delete"
+                            data-target="{{$i}}">
+                                <i class="fa-solid fa-trash-can fa-lg text-rose-400"></i>
+                            </button>
+                        </form>
+                    @endif
+
                     @if (isset($view))
                         <a href="{{ route("$route.show", $record->id) }}" class="px-1 mx-1" title="Detail Info">
                             <i class="fa-solid fa-circle-info fa-lg text-blue-400"></i>
                         </a>
+                    @endif
+                    @if ($col === 'status' && $record->status != config("status.status_id.completed") && !isset($no_action))
+                        <a class="px-1 mx-1" title="Change Status" id="status_change{{$i}}" data-dropdown-toggle="changeStatus{{$i}}">
+                            <i class="fa-solid fa-ellipsis fa-lg"></i>
+                        </a>
+
+                        <div id="changeStatus{{$i}}" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="status_change{{$i}}">
+                                @if (auth()->user())
+                                    @switch($record->status)
+                                        @case(config("status.status_id.pending"))
+                                            <li>
+                                                <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.booked")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Confirm Booking</a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.checkedIn")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
+                                            </li>
+                                            @break
+
+                                        @case(config("status.status_id.booked"))
+                                            <li>
+                                                <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.checkedIn")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
+                                            </li>
+                                            @break
+
+                                        @case(config("status.status_id.checkedIn"))
+                                            <li>
+                                                <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.completed")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check Out</a>
+                                            </li>
+                                            @break
+                                        @default
+
+                                    @endswitch
+                                @endif
+                                <li>
+                                    <form action="{{ route("$route.destroy", $record->id) }}" id="delete-form-{{$i}}" class="block px-4 py-2 hover:bg-gray-100" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" class="delete-btn" title="Delete"
+                                        data-target="{{$i}}">
+                                            {{-- <i class="fa-solid fa-trash-can fa-lg text-rose-400"></i> --}}
+                                            Cancel
+                                        </button>
+                                    </form>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    @endif
+                    @if (isset($no_action))
+                        <button type="button" disabled class="relative px-1 mx-1" title="restore">
+                            <i class="fa-solid fa-rotate-left fa-lg text-green-600"></i>
+                            Restore
+                            <span class="bg-yellow-300 px-3 rounded-full border border-secondary text-xs absolute top-[-15px] right-[-25px]">Pro</span>
+                        </button>
                     @endif
                 </td>
             </tr>

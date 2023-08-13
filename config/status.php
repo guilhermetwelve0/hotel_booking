@@ -6,13 +6,23 @@ return [
         "booked" => 1,
         "checkedIn" => 2,
         "completed" => 3,
-        "canceled" => 4
    ],
    "status_label" => [
         0 => "Pending",
         1 => "Booked",
         2 => "Checked In",
         3 => "Completed",
-        4 => "Canceled"
-   ]
+   ],
+   "status_color" => [
+        0 => "yellow",
+        1 => "blue",
+        2 => "purple",
+        3 => "green",
+    ],
+    "status_icon" => [
+        0 => "spinner",
+        1 => "bookmark",
+        2 => "calendar-check",
+        3 => "circle-check",
+    ]
 ];

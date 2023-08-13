@@ -26,9 +26,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class,'landing'])->name('landing');
 Route::get('/about', [PageController::class,'about'])->name('about');
 Route::get('/contact', [PageController::class,'contact'])->name('contact');
+Route::post('/guest-info-add', [PageController::class,'guestInfoAdd'])->name('guest-info-add');
+Route::get('/guest-booking', [PageController::class,'guestBooking'])->name('guest-booking');
+Route::post('/guest-booking-add', [PageController::class,'guestBookingAdd'])->name('guest-booking-add');
+Route::get('/change-guest', [PageController::class,'changeGuest'])->name('change-guest');
 
 Route::prefix('/ajax')->name('ajax.')->controller(AjaxController::class)->group(function () {
     Route::get('/search-rooms', 'searchRooms')->name('search-rooms');
+    Route::get('/update-status', 'updateStatus')->name('update-status');
 });
 
 Route::middleware('auth')->group(function () {
@@ -38,9 +43,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('booking/canceled-list', [BookingController::class, 'canceledList'])->name('booking.canceled-list');
     Route::resource('booking', BookingController::class);
 
     Route::prefix('room-info')->name('room-info.')->group(function (){

@@ -22,8 +22,7 @@
         @include('components.table', [
             'records' => $services,
             'fields' => $fields,
-            'route' => 'room-info.service-facility',
-            'view' => true,
+            'route' => 'room-info.service-facility'
         ])
     </div>
 @endsection
