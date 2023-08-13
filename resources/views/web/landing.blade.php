@@ -61,9 +61,9 @@
                         @include('components.card', $room)
                     @endforeach
                 </div>
-                {{-- <div class="flex justify-end py-3">
-                    <a href="#" class="text-white hover:text-blue-500 hover:underline">View More Rooms <i class="fa-solid fa-angles-right"></i></a>
-                </div> --}}
+                <div class="flex justify-end py-3">
+                    <a href="{{route('room-list')}}" class="text-white hover:text-blue-500 hover:underline">View More Rooms <i class="fa-solid fa-angles-right"></i></a>
+                </div>
             </div>
         </section>
 

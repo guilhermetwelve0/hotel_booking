@@ -30,6 +30,7 @@ Route::post('/guest-info-add', [PageController::class,'guestInfoAdd'])->name('gu
 Route::get('/guest-booking', [PageController::class,'guestBooking'])->name('guest-booking');
 Route::post('/guest-booking-add', [PageController::class,'guestBookingAdd'])->name('guest-booking-add');
 Route::get('/change-guest', [PageController::class,'changeGuest'])->name('change-guest');
+Route::get('/room-list', [PageController::class,'roomList'])->name('room-list');
 
 Route::prefix('/ajax')->name('ajax.')->controller(AjaxController::class)->group(function () {
     Route::get('/search-rooms', 'searchRooms')->name('search-rooms');

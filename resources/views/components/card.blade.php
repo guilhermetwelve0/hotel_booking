@@ -16,7 +16,6 @@
                 </span>
             @endforeach
         </div>
-        {{-- <p class="text-green-500 text-xs mt-2">Only 1 room left</p> --}}
-        <button class="bg-primary hover:bg-gray-600 text-white px-4 py-2 rounded-br-md rounded-tl-lg border-t border-l border-accent absolute right-0 bottom-0">Select for Booking</button>
+        <button class="bg-primary hover:bg-gray-600 text-white px-4 py-2 rounded-br-md rounded-tl-lg border-t border-l border-accent absolute right-0 bottom-0">{{ $room->floor . leadZero($room->room_no) }}</button>
       </div>
     </div>
