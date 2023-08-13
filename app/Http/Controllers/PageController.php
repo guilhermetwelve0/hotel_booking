@@ -100,4 +100,17 @@ class PageController extends Controller
         session()->forget('guest_id');
         return redirect()->route('guest-booking');
     }
+
+    public function roomList()
+    {
+        $rooms = Room::with('roomType', 'services')
+            ->select('rooms.*')
+            ->selectRaw('COALESCE(room_types.price + SUM(service_facilities.price), 0) AS total_price')
+            ->join('room_types', 'rooms.room_type_id', '=', 'room_types.id')
+            ->join('room_service_facility', 'rooms.id', '=', 'room_service_facility.room_id')
+            ->join('service_facilities', 'room_service_facility.service_facility_id', '=', 'service_facilities.id')
+            ->groupBy('rooms.id')
+            ->get();
+        return view('web.rooms', compact('rooms'));
+    }
 }
