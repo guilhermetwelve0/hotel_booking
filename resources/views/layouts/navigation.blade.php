@@ -14,16 +14,13 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
-                        {{ __('Reception') }}
+                    <x-nav-link :href="route('booking.index')" :active="request()->routeIs('booking.*')">
+                        {{ __('Booking') }}
                     </x-nav-link>
                     <x-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
                         {{ __('Room Info') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*')">
+                    <x-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*') || request()->routeIs('profile.*') ">
                         {{ __('Setting') }}
                     </x-nav-link>
                 </div>
@@ -78,16 +75,13 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('new')">
-                {{ __('Reception') }}
+            <x-responsive-nav-link :href="route('booking.index')" :active="request()->routeIs('booking.*')">
+                {{ __('Booking') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
                 {{ __('Room Info') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*')">
+            <x-responsive-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*') || request()->routeIs('profile.*')">
                 {{ __('Setting') }}
             </x-responsive-nav-link>
         </div>

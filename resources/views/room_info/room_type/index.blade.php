@@ -15,13 +15,12 @@
             $fields = [
                 "name" => "Name",
                 "price" => "Cost",
-                "description" => "Description",
+                // "description" => "Description",
                 "thumbnail" => "Thumbnail",
             ];
         @endphp
         @include('components.table', ["records" => $types,
                                         "fields" => $fields,
-                                        "route" => "room-info.room-type",
-                                        "view" => true])
+                                        "route" => "room-info.room-type"])
     </div>
 @endsection

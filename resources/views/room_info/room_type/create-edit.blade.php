@@ -21,7 +21,7 @@
                 ],
                 'Price' => [
                     'name' => 'price',
-                    'attr' => []
+                    'attr' => ['required']
                 ],
                 'Description' => [
                     'name' => 'description',

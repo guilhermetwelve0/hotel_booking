@@ -45,7 +45,7 @@ class GuestController extends Controller
      */
     public function show(Guest $guest)
     {
-        //
+        return view('setting.guest.show', compact('guest'));
     }
 
     /**

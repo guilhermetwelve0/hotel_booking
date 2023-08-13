@@ -5,7 +5,7 @@
 @section('content')
     <div class="flex justify-between items-center pb-4">
         @include('components.back-and-create-btn', [
-            'name' => 'Service or Facility',
+            'name' => '',
             'route' => 'room-info.service-facility.create',
             'create' => true
         ])
@@ -22,8 +22,7 @@
         @include('components.table', [
             'records' => $services,
             'fields' => $fields,
-            'route' => 'room-info.service-facility',
-            'view' => true,
+            'route' => 'room-info.service-facility'
         ])
     </div>
 @endsection

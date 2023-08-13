@@ -2,7 +2,7 @@
 
 @php
     $sidebar_route = isset($sidebar_route) ? $sidebar_route : null;
-    $common = "flex items-center p-2 rounded-lg group ps-7 btn-rounded-reverse ";
+    $common = "flex items-center py-2 px-10 rounded-lg group ps-7 btn-rounded-reverse ";
     $classes =  request()->routeIs("$sidebar_route.*")
                 ? $common .= "text-primary bg-secondary"
                 : $common .= isset($disabled) ? 'text-gray-400' : 'hover:bg-gray-700 text-white';

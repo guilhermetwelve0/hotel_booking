@@ -23,7 +23,7 @@
                     'email' => 'Email',
                     'created_at' => 'Date Create',
                     'updated_at' => 'Latest Update',
-                    'updated_by' => 'Updated By',
+                    'updatedByUser' => 'Updated By',
                 ];
             @endphp
             @include('components.table', [

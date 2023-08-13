@@ -60,6 +60,7 @@ $(document).ready(function() {
                 $('#preview_img').removeClass('hidden');
             };
             reader.readAsDataURL(file);
+            $('#old_img').attr('disabled', 'disabled')
         }
     })
 
@@ -69,5 +70,9 @@ $(document).ready(function() {
         $('#selected_icon').removeClass()
         $('#selected_icon').addClass(`fa-solid ${icon} text-white fa-lg`)
     })
+
+    $('#multiple-select').selectize({
+        plugins: ["restore_on_backspace", "clear_button", "remove_button"],
+    });
 });
 

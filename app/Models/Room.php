@@ -12,11 +12,10 @@ class Room extends Model
     protected $fillable = [
         'floor',
         'room_no',
-        'phone',
-        'updated_by'
+        'room_type_id',
     ];
 
-    public function type()
+    public function roomType()
     {
         return $this->belongsTo(RoomType::class, 'room_type_id');
     }
@@ -24,5 +23,10 @@ class Room extends Model
     public function services()
     {
         return $this->belongsToMany(ServiceFacility::class, 'room_service_facility');
+    }
+
+    public function bookings()
+    {
+        return $this->belongsToMany(Booking::class, 'booking_room');
     }
 }

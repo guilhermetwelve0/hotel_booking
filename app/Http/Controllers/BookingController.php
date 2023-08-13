@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Guest;
 use Illuminate\Http\Request;
+use App\Http\Requests\BookingRequest;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -12,7 +15,8 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        $bookings = Booking::orderBy('check_in_date', 'desc')->orderBy('check_out_date')->get();
+        return view('booking.index', compact('bookings'));
     }
 
     /**
@@ -20,7 +24,8 @@ class BookingController extends Controller
      */
     public function create()
     {
-        //
+        $guests = Guest::get();
+        return view('booking.create', compact('guests'));
     }
 
     /**
@@ -28,7 +33,21 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $validated = $request->validated();
+            $validated['check_in_date'] = Carbon::parse($validated['check_in_date'])->toDateString();
+            $validated['check_out_date'] = Carbon::parse($validated['check_out_date'])->toDateString();
+            $booking = Booking::create($validated);
+            $rooms = $request->input('rooms', []);
+            $booking->rooms()->attach($rooms);
+
+        }
+        catch(\Exception $e){
+            dd($e);
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('booking.index')->with('success', 'New Booking Successfully Created!');
     }
 
     /**
@@ -36,7 +55,7 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+        dd('show');
     }
 
     /**
@@ -44,7 +63,8 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        //
+        dd('edit');
+
     }
 
     /**
@@ -52,7 +72,8 @@ class BookingController extends Controller
      */
     public function update(Request $request, Booking $booking)
     {
-        //
+        dd('update');
+
     }
 
     /**
@@ -60,6 +81,19 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
-        //
+        try{
+            $booking->delete();
+        }
+        catch(\Exception $e){
+            return redirect()->back()->with('error', 'Something Went Wrong!');
+        }
+
+        return redirect()->route('booking.index')->with('success', 'Successfully Cancel Booking!');
+    }
+
+    public function canceledList()
+    {
+        $bookings = Booking::orderBy('check_in_date', 'desc')->orderBy('check_out_date')->onlyTrashed()->get();
+        return view('booking.canceled-list', compact('bookings'));
     }
 }
