@@ -1,9 +1,9 @@
-@section('title', "Booking List")
+@section('title', "Canceled Booking List")
 
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
-            {{ __('Booking List') }}<i class="fa-solid fa-solid fa-book ps-3"></i>
+            {{ __('Canceled Booking List') }}<i class="fa-solid fa-solid fa-book ps-3"></i>
         </h2>
     </x-slot>
 
@@ -12,7 +12,6 @@
             @include('components.back-and-create-btn', [
                 'custom_name' => 'Make Booking',
                 'route' => 'booking.create',
-                'create' => true,
                 'back' => 'booking.index'
             ])
         </div>
