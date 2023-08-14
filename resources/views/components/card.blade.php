@@ -1,12 +1,12 @@
     <div class="relative bg-gradient-to-r from-[#1119] to-[#9991] rounded-md shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:rotate-2">
-      <img src="{{asset($room->roomType->thumbnail)}}" alt="Room Image" class="w-full h-48 object-cover rounded-t-lg">
+      <img src="{{asset($room->roomType?->thumbnail)}}" alt="Room Image" class="w-full h-48 object-cover rounded-t-lg">
       <div class="p-4">
         <div class="flex justify-between">
-            <h2 class="text-2xl font-semibold text-white mb-2">{{$room->roomType->name}}</h2>
+            <h2 class="text-2xl font-semibold text-white mb-2">{{$room->roomType?->name}}</h2>
             <p class="text-accent mb-2">${{$room->total_price}}</p>
         </div>
         <p class="text-gray-400 text-clamp mb-5">
-            {{$room->roomType->description}}
+            {{$room->roomType?->description}}
         </p>
         <div class="flex space-x-2 mb-8">
             @foreach ($room->services as $service)

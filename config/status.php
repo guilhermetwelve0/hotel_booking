@@ -14,7 +14,7 @@ return [
         3 => "Completed",
    ],
    "status_color" => [
-        0 => "yellow",
+        0 => "red",
         1 => "blue",
         2 => "purple",
         3 => "green",

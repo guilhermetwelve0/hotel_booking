@@ -13,15 +13,14 @@ class PageController extends Controller
     public function landing(Request $request)
     {
         $bestRooms = Room::with('roomType', 'services')
-            ->select('rooms.*')
-            ->selectRaw('COALESCE(room_types.price + SUM(service_facilities.price), 0) AS total_price')
-            ->join('room_types', 'rooms.room_type_id', '=', 'room_types.id')
-            ->join('room_service_facility', 'rooms.id', '=', 'room_service_facility.room_id')
-            ->join('service_facilities', 'room_service_facility.service_facility_id', '=', 'service_facilities.id')
-            ->groupBy('rooms.id')
-            ->orderByDesc('total_price')
-            ->take(3)
-            ->get();
+                        ->select('rooms.*')
+                        ->selectRaw('COALESCE(room_types.price + SUM(service_facilities.price), 0) AS total_price')
+                        ->join('room_types', 'rooms.room_type_id', '=', 'room_types.id')
+                        ->join('room_service_facility', 'rooms.id', '=', 'room_service_facility.room_id')
+                        ->join('service_facilities', 'room_service_facility.service_facility_id', '=', 'service_facilities.id')
+                        ->groupBy('rooms.id', 'rooms.floor', 'rooms.room_no', 'rooms.room_type_id', 'rooms.created_at', 'rooms.updated_at','room_types.price')
+                        ->take(3)
+                        ->get();
 
         // dd($bestRooms);
         return view('web.landing', compact('bestRooms'));
@@ -109,7 +108,7 @@ class PageController extends Controller
             ->join('room_types', 'rooms.room_type_id', '=', 'room_types.id')
             ->join('room_service_facility', 'rooms.id', '=', 'room_service_facility.room_id')
             ->join('service_facilities', 'room_service_facility.service_facility_id', '=', 'service_facilities.id')
-            ->groupBy('rooms.id')
+            ->groupBy('rooms.id', 'rooms.floor', 'rooms.room_no', 'rooms.room_type_id', 'rooms.created_at', 'rooms.updated_at','room_types.price')
             ->get();
         return view('web.rooms', compact('rooms'));
     }
