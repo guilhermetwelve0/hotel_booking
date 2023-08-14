@@ -95,8 +95,7 @@
                         <form action="{{ route("$edit_route.destroy", $record->id) }}" id="delete-form-{{$i}}" class="inline" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="button" class="px-1 mx-1 delete-btn" title="Delete"
-                            data-target="{{$i}}">
+                            <button type="button" class="px-1 mx-1 delete-btn" title="Delete" onclick="deleteRow({{$i}})">
                                 <i class="fa-solid fa-trash-can fa-lg text-rose-400"></i>
                             </button>
                         </form>
@@ -140,13 +139,11 @@
 
                                     @endswitch
                                 @endif
-                                <li>
+                                <li onclick="deleteRow({{$i}})">
                                     <form action="{{ route("$route.destroy", $record->id) }}" id="delete-form-{{$i}}" class="block px-4 py-2 hover:bg-gray-100" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" class="delete-btn" title="Delete"
-                                        data-target="{{$i}}">
-                                            {{-- <i class="fa-solid fa-trash-can fa-lg text-rose-400"></i> --}}
+                                        <button type="button" class="delete-btn" title="Delete">
                                             Cancel
                                         </button>
                                     </form>
