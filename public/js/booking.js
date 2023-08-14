@@ -6,7 +6,7 @@ $(document).ready(function() {
         guestData = $('#guestData').data('guests')
         idx = $(this).val()
 
-        console.log(guestData[idx].id)
+        // console.log(guestData[idx].id)
 
         $('#emailInput').val(guestData[idx].email)
         $('#phoneInput').val(guestData[idx].phone)
@@ -14,7 +14,6 @@ $(document).ready(function() {
     })
 
     $('#find_room').click(function() {
-        console.log('ok')
         event.preventDefault();
 
         startDate = $("#check_in").val();
@@ -28,7 +27,7 @@ $(document).ready(function() {
             },
             dataType: "json",
             success: function (response) {
-                console.log(response)
+                // console.log(response)
                 if(response.length > 0){
                     scrollTo('#filtered_room')
 
@@ -86,7 +85,7 @@ $(document).ready(function() {
 
         booking_id = $(this).data('booking');
         status_id = $(this).data('status');
-        console.log(booking_id, status_id)
+        // console.log(booking_id, status_id)
         $.ajax({
             url: "/ajax/update-status",
             type: "GET",
@@ -96,7 +95,7 @@ $(document).ready(function() {
             },
             dataType: "json",
             success: function (response){
-                console.log(response)
+                // console.log(response)
                 location.reload();
             },
             error: function (xhr, status, error) {

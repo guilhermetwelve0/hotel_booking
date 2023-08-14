@@ -42,6 +42,12 @@ $(document).ready(function() {
     });
 });
 
+$(document).click(function(event) {
+    if (!$(event.target).closest('.status-chg-btn').length) {
+        $('.status-chg-dropdown').addClass('hidden');
+    }
+})
+
 function deleteRow(target) {
     console.log(target);
 

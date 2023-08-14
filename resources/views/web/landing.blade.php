@@ -54,6 +54,7 @@
                 <div class="p-4 sm:p-8 bg-[#fffe] shadow sm:rounded-lg mb-5 hidden" id="selected_room">
                     @include('booking.selected-rooms')
                 </div>
+                <input type="hidden" id="guest_id" name="guest_id" value="{{ session('guest_id') }}">
 
                 <h1 class="text-secondary cinzel-decorative text-2xl mb-3">Our Best Rooms</h1>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -69,10 +70,10 @@
 
 
         <!-- guest info modal -->
-        <div id="guest-modal" tabindex="-1" aria-hidden="true" class="bg-[#0005] backdrop-blur-sm fixed z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full max-h-full">
+        <div id="guest-modal" tabindex="-1" aria-hidden="true" class="bg-[#0005] backdrop-blur-sm fixed z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto inset-0 h-full max-h-full">
             <div class="w-full max-w-md max-h-full">
                 <!-- Modal content -->
-                <div class="fixed bg-white rounded-lg shadow top-[50%] left-1/2 translate-x-[-50%] translate-y-[-50%]">
+                <div class="fixed bg-white rounded-lg shadow top-[50%] left-1/2 translate-x-[-50%] translate-y-[-50%] min-w-[300px] w-1/4">
                     <div class="px-6 py-6 lg:px-8">
                         <h3 class="mb-4 text-xl font-medium text-gray-900 ">Fill Your Information</h3>
                         <div>
@@ -91,7 +92,14 @@
                                 <x-text-input id="phone" name="phone" type="number" class="mt-1 block w-full" required autocomplete="phone" />
                                 <x-input-error class="mt-2" :messages="$errors->get('phone')" />
                             </div>
-                            <button id="booking_submit" type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit Booking</button>
+                            <div class="flex gap-3">
+                                <button data-modal-hide="guest-modal" type="button" class="w-full text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">
+                                    Cancel
+                                </button>
+                                <button id="booking_submit" type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                    Submit Booking
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,13 +110,19 @@
     <script>
         $(document).ready(function() {
             $('#create-booking').click(function(e) {
-                e.preventDefault(); // Prevent the default form submission
+                e.preventDefault(); 
 
-                $('#guest-modal').show(); // Show the confirmation modal
+                var guestId = $('#guest_id').val();
+
+                if (guestId !== '') {
+                    $('#web_form').submit();
+                } else {
+                    $('#guest-modal').show();
+                }
             });
 
             $('#booking_submit').click(function() {
-                $('#web_form').submit(); // Submit the form when the confirm button in the modal is clicked
+                $('#web_form').submit(); 
             });
         });
     </script>

@@ -14,10 +14,10 @@ return [
         3 => "Completed",
    ],
    "status_color" => [
-        0 => "red",
-        1 => "blue",
-        2 => "purple",
-        3 => "green",
+        0 => "bg-rose-300",
+        1 => "bg-sky-300",
+        2 => "bg-teal-300",
+        3 => "bg-amber-300",
     ],
     "status_icon" => [
         0 => "spinner",

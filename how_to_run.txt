@@ -1,5 +1,15 @@
+<-- require (need to install) -->
 php ^8.1
-laravel ^10.10
+comopser
+git
+node.js
+
+<-- run in the project folder or directory -->
+cp .env.example .env 
+
+// or copy .env.example file and change name to .env
+
+// in .env file,  change DB_DATABASE, DB_USERNAME, DB_PASSWORD to connect your local database
 
 composer install
 
@@ -12,3 +22,5 @@ php artisan migrate:fresh --seed
 npm install
 
 npm run dev
+
+open browser and go to url http://localhost:8000 or http://127.0.0.1:8000

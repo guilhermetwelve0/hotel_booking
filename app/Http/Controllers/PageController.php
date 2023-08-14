@@ -68,16 +68,21 @@ class PageController extends Controller
     public function guestBookingAdd(Request $request)
     {
         try{
-            $old_guest = Guest::where('name', $request['name'])->orWhere('email', $request['email'])->first();
-            if($old_guest){
-                $guest = $old_guest;
-            } else{
-                $guest = Guest::create($request->all());
+            if(!is_null($request->guest_id)){
+                $request['guest_id'] = $request->guest_id;
+            } else {
+                $old_guest = Guest::where('name', $request['name'])->orWhere('email', $request['email'])->first();
+                if($old_guest){
+                    $old_guest->update($request->only(['name', 'email', 'phone']));
+                    $guest = $old_guest;
+                } else{
+                    $guest = Guest::create($request->only(['name', 'email', 'phone']));
+                }
+                $request['guest_id'] = $guest->id;
             }
 
             $request['check_in_date'] = Carbon::parse($request['check_in_date'])->toDateString();
             $request['check_out_date'] = Carbon::parse($request['check_out_date'])->toDateString();
-            $request['guest_id'] = $guest->id;
             $request['type'] = "web";
 
             $booking = Booking::create($request->all());

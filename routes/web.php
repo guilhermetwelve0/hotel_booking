@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
     Route::get('booking/canceled-list', [BookingController::class, 'canceledList'])->name('booking.canceled-list');
     Route::resource('booking', BookingController::class);
 

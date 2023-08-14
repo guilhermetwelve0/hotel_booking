@@ -23,7 +23,7 @@
     <tbody>
 
         @foreach ($records as $i => $record)
-            <tr class="border-b border-gray-200 hover-table">
+            <tr class="border-b hover-table">
                 <td class="bg-gray-100">{{ $i + 1 }}</td>
                 @foreach ($fields as $col => $label)
                     @php
@@ -54,9 +54,10 @@
                             @php
                                 $idx = $record->$col;
                                 $color = config("status.status_color.$idx");
+                                $bg = "bg-rose-300";
                             @endphp
-                            <span class="status-cols text-gray-600 bg-{{$color}}-200 border border-{{$color}}-400 flex items-center py-1 h-full w-full rounded-md">
-                                <i class="fa-solid fa-{{config("status.status_icon.$idx")}} mx-3"></i>
+                            <span class='status-cols text-gray-600 border {{$bg}} flex items-center py-1 h-full w-full rounded-md'>
+                                <i class='fa-solid fa-{{config("status.status_icon.$idx")}} mx-3'></i>
                                 {{ config("status.status_label.$idx") }}
                             </span>
 
@@ -79,7 +80,7 @@
                         @endif
                     </td>
                 @endforeach
-                <td class="bg-gray-{{ count($fields) % 2 ? '100' : '50' }} min-w-[111px]">
+                <td class="bg-gray-{{ count($fields) % 2 ? '100' : '50' }} min-w-[111px] ">
                     @php
                         $edit_route = $route;
                         $admin = auth()->user()->id ?? null;
@@ -107,50 +108,50 @@
                         </a>
                     @endif
                     @if ($col === 'status' && $record->status != config("status.status_id.completed") && !isset($no_action))
-                        <a class="px-1 mx-1" title="Change Status" id="status_change{{$i}}" data-dropdown-toggle="changeStatus{{$i}}">
-                            <i class="fa-solid fa-ellipsis fa-lg"></i>
-                        </a>
+                            <a class="px-1 mx-1 status-chg-btn" title="Change Status" id="status_change{{$i}}" onclick="initDropdowns()" data-dropdown-toggle="changeStatus{{$i}}">
+                                <i class="fa-solid fa-ellipsis fa-lg"></i>
+                            </a>
+                            <!-- data-dropdown-toggle="changeStatus{{$i}}"   -->
+                            <div id="changeStatus{{$i}}" class="absolute m-0 z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 status-chg-dropdown" style="inset: 0px auto auto 0px;">
+                                <ul class="py-2 text-sm text-gray-700" aria-labelledby="status_change{{$i}}">
+                                    @if (auth()->user())
+                                        @switch($record->status)
+                                            @case(config("status.status_id.pending"))
+                                                <li>
+                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.booked")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Confirm Booking</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.checkedIn")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
+                                                </li>
+                                                @break
 
-                        <div id="changeStatus{{$i}}" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="status_change{{$i}}">
-                                @if (auth()->user())
-                                    @switch($record->status)
-                                        @case(config("status.status_id.pending"))
-                                            <li>
-                                                <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.booked")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Confirm Booking</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.checkedIn")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
-                                            </li>
-                                            @break
+                                            @case(config("status.status_id.booked"))
+                                                <li>
+                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.checkedIn")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
+                                                </li>
+                                                @break
 
-                                        @case(config("status.status_id.booked"))
-                                            <li>
-                                                <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.checkedIn")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
-                                            </li>
-                                            @break
+                                            @case(config("status.status_id.checkedIn"))
+                                                <li>
+                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.completed")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check Out</a>
+                                                </li>
+                                                @break
+                                            @default
 
-                                        @case(config("status.status_id.checkedIn"))
-                                            <li>
-                                                <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.completed")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check Out</a>
-                                            </li>
-                                            @break
-                                        @default
+                                        @endswitch
+                                    @endif
+                                    <li onclick="deleteRow({{$i}})">
+                                        <form action="{{ route("$route.destroy", $record->id) }}" id="delete-form-{{$i}}" class="block px-4 py-2 hover:bg-gray-100" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="delete-btn" title="Delete">
+                                                Cancel
+                                            </button>
+                                        </form>
+                                    </li>
 
-                                    @endswitch
-                                @endif
-                                <li onclick="deleteRow({{$i}})">
-                                    <form action="{{ route("$route.destroy", $record->id) }}" id="delete-form-{{$i}}" class="block px-4 py-2 hover:bg-gray-100" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="button" class="delete-btn" title="Delete">
-                                            Cancel
-                                        </button>
-                                    </form>
-                                </li>
-
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
 
                     @endif
                     @if (isset($no_action))
