@@ -24,11 +24,11 @@ class BookingsSeeder extends Seeder
             $user = User::inRandomOrder()->first()->id;
             $guest = Guest::inRandomOrder()->first()->id;
 
-            $total = $room->roomType->price + $room->services->sum('price');
-
             $daysOffset = $faker->numberBetween(-10, 10);
             $checkInDate = Carbon::now()->addDays($daysOffset);
             $checkOutDate = $checkInDate->copy()->addDays($faker->numberBetween(1, 7));
+
+            $total = ($room->roomType->price + $room->services->sum('price')) * calculateDayCount($checkInDate, $checkOutDate);
 
             if($checkInDate->isBefore(Carbon::now()) && $checkOutDate->isAfter(Carbon::now())){
                 $status = 2;

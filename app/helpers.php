@@ -29,3 +29,9 @@ function dateFormat($date, $format){
     return \Carbon\Carbon::parse($date)->format($format);
 }
 
+function calculateDayCount($checkInDate, $checkOutDate) {
+    $checkIn = new DateTime($checkInDate);
+    $checkOut = new DateTime($checkOutDate);
+    $interval = $checkIn->diff($checkOut);
+    return $interval->days;
+}
