@@ -50,7 +50,7 @@
                         @elseif($col === 'icon')
                             <i class="fa-solid {{ $record->$col ?? 'fa-ellipsis' }} fa-lg"></i>
 
-                        @elseif($col === 'status')
+                        @elseif($col === 'status')  
                             @php
                                 $idx = $record->$col;
                                 $color = config("status.status_color.$idx");
