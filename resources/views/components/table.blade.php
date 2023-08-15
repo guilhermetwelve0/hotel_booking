@@ -53,10 +53,11 @@
                         @elseif($col === 'status')
                             @php
                                 $idx = $record->$col;
-                                $color = config("status.status_color.$idx");
+                                $bg = config("status.status_bg_color.$idx");
+                                $border = config("status.status_border_color.$idx");
                             @endphp
-                            <span class="status-cols text-gray-600 bg-{{$color}}-200 border border-{{$color}}-400 flex items-center py-1 h-full w-full rounded-md">
-                                <i class="fa-solid fa-{{config("status.status_icon.$idx")}} mx-3"></i>
+                            <span class="px-3 status-cols text-gray-600 {{$bg}} {{$border}} border flex items-center py-1 h-full w-full rounded-md">
+                                <i class="fa-solid fa-{{config("status.status_icon.$idx")}} me-3"></i>
                                 {{ config("status.status_label.$idx") }}
                             </span>
 
@@ -67,13 +68,15 @@
                             <a href="{{asset($record->$col)}}" class="underline text-blue-600">{{$record->$col ?? "/"}}</a>
 
                         @elseif($col === 'service_facility')
-                            @forelse($record->services as $service)
-                                <span class="rounded-full bg-blue-400 text-white py-1 px-4 m-1">
+                            <div style="height: fit-content">
+                                @forelse($record->services as $service)
+                                <span class="rounded-full bg-blue-300 border border-blue-900 text-blue-900 py-1 px-4 m-1 whitespace-nowrap">
                                     <i class="fa-solid {{$service->icon}}"></i>&nbsp;{{$service->name}}
                                 </span>
-                            @empty
-                                ---
-                            @endforelse
+                                @empty
+                                    ---
+                                @endforelse
+                            </div>
                         @else
                             {{ $record->$col ?? '---' }}
                         @endif

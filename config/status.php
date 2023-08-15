@@ -13,11 +13,17 @@ return [
         2 => "Checked In",
         3 => "Completed",
    ],
-   "status_color" => [
-        0 => "yellow",
-        1 => "blue",
-        2 => "purple",
-        3 => "green",
+   "status_bg_color" => [
+        0 => "bg-yellow-200",
+        1 => "bg-blue-200",
+        2 => "bg-purple-200",
+        3 => "bg-green-200",
+    ],
+    "status_border_color" => [
+        0 => "border-yellow-400",
+        1 => "border-blue-400",
+        2 => "border-purple-400",
+        3 => "border-green-400",
     ],
     "status_icon" => [
         0 => "spinner",

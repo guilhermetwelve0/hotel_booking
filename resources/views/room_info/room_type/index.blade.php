@@ -21,6 +21,7 @@
         @endphp
         @include('components.table', ["records" => $types,
                                         "fields" => $fields,
-                                        "route" => "room-info.room-type"])
+                                        "route" => "room-info.room-type",
+                                        'view' => true])
     </div>
 @endsection

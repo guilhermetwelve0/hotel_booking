@@ -8,11 +8,10 @@
         <p class="text-gray-400 text-clamp mb-5">
             {{$room->roomType->description}}
         </p>
-        <div class="flex space-x-2 mb-8">
+        <div class="mb-8">
             @foreach ($room->services as $service)
-                <span class="px-2 py-1 bg-blue-600 text-white rounded-full text-xs">
-                    <i class="fa-solid {{$service->icon}}"></i>
-                    {{$service->name}}
+                <span class="px-2 py-1 bg-blue-600 text-white rounded-full text-xs m-1 whitespace-nowrap">
+                    <i class="fa-solid {{$service->icon}}"></i>&nbsp;{{$service->name}}
                 </span>
             @endforeach
         </div>
