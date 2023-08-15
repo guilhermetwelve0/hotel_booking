@@ -60,7 +60,7 @@ class RoomTypeController extends Controller
      */
     public function show(RoomType $roomType)
     {
-        dd($roomType);
+        return view('room_info.room_type.show', compact('roomType'));
     }
 
     /**

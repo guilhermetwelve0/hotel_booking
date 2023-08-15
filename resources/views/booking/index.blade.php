@@ -33,7 +33,7 @@
                 'records' => $bookings,
                 'fields' => $fields,
                 'route' => 'booking',
-                'remove_edit_del' => true
+                'remove_edit_del' => true,
             ])
         </div>
     </div>

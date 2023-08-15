@@ -29,7 +29,7 @@
                 'records' => $guest->bookings,
                 'fields' => $fields,
                 'route' => 'setting.guest',
-                'view' => true,
+                'remove_edit_del' => true
             ])
         </div>
     </div>

@@ -13,16 +13,22 @@ return [
         2 => "Checked In",
         3 => "Completed",
    ],
-   "status_color" => [
-        0 => "bg-rose-300",
-        1 => "bg-sky-300",
-        2 => "bg-teal-300",
-        3 => "bg-amber-300",
+   "status_bg_color" => [
+        0 => "#fef08a",
+        1 => "#bfdbfe",
+        2 => "#ddd6fe",
+        3 => "#bbf7d0",
+    ],
+    "status_border_color" => [
+        0 => "#facc15",
+        1 => "#60a5fa",
+        2 => "#a78bfa",
+        3 => "#4ade80",
     ],
     "status_icon" => [
         0 => "spinner",
         1 => "bookmark",
         2 => "calendar-check",
         3 => "circle-check",
-    ]
+    ],
 ];

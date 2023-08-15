@@ -50,14 +50,13 @@
                         @elseif($col === 'icon')
                             <i class="fa-solid {{ $record->$col ?? 'fa-ellipsis' }} fa-lg"></i>
 
-                        @elseif($col === 'status')
+                        @elseif($col === 'status')  
                             @php
                                 $idx = $record->$col;
-                                $color = config("status.status_color.$idx");
-                                $bg = "bg-rose-300";
                             @endphp
-                            <span class='status-cols text-gray-600 border {{$bg}} flex items-center py-1 h-full w-full rounded-md'>
-                                <i class='fa-solid fa-{{config("status.status_icon.$idx")}} mx-3'></i>
+                            <span class='px-3 status-cols text-gray-600 border flex items-center py-1 h-full w-full rounded-md' 
+                                style='background: {{config("status.status_bg_color.$idx")}}; border-color: {{config("status.status_border_color.$idx")}}'>
+                                <i class='fa-solid fa-{{config("status.status_icon.$idx")}} me-3'></i>
                                 {{ config("status.status_label.$idx") }}
                             </span>
 
@@ -68,13 +67,15 @@
                             <a href="{{asset($record->$col)}}" class="underline text-blue-600">{{$record->$col ?? "/"}}</a>
 
                         @elseif($col === 'service_facility')
-                            @forelse($record->services as $service)
-                                <span class="rounded-full bg-blue-400 text-white py-1 px-4 m-1">
+                            <div style="height: fit-content">
+                                @forelse($record->services as $service)
+                                <span class="rounded-full bg-blue-300 border border-blue-900 text-blue-900 py-1 px-4 m-1 whitespace-nowrap">
                                     <i class="fa-solid {{$service->icon}}"></i>&nbsp;{{$service->name}}
                                 </span>
-                            @empty
-                                ---
-                            @endforelse
+                                @empty
+                                    ---
+                                @endforelse
+                            </div>
                         @else
                             {{ $record->$col ?? '---' }}
                         @endif
@@ -93,7 +94,7 @@
                             <i class="fa-solid fa-pen-to-square fa-lg text-secondary"></i>
                         </a>
 
-                        <form action="{{ route("$edit_route.destroy", $record->id) }}" id="delete-form-{{$i}}" class="inline" method="POST">
+                        <form action='{{ route("$edit_route.destroy", $record->id) }}' id="delete-form-{{$i}}" class="inline" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="px-1 mx-1 delete-btn" title="Delete" onclick="deleteRow({{$i}})">
@@ -103,37 +104,36 @@
                     @endif
 
                     @if (isset($view))
-                        <a href="{{ route("$route.show", $record->id) }}" class="px-1 mx-1" title="Detail Info">
+                        <a href='{{ route("$route.show", $record->id) }}' class="px-1 mx-1" title="Detail Info">
                             <i class="fa-solid fa-circle-info fa-lg text-blue-400"></i>
                         </a>
                     @endif
                     @if ($col === 'status' && $record->status != config("status.status_id.completed") && !isset($no_action))
-                            <a class="px-1 mx-1 status-chg-btn" title="Change Status" id="status_change{{$i}}" onclick="initDropdowns()" data-dropdown-toggle="changeStatus{{$i}}">
+                            <a class="px-1 mx-1 status-chg-btn cursor-pointer" title="Change Status" id="status_change{{$i}}" onclick="initDropdowns()" data-dropdown-toggle="changeStatus{{$i}}">
                                 <i class="fa-solid fa-ellipsis fa-lg"></i>
                             </a>
-                            <!-- data-dropdown-toggle="changeStatus{{$i}}"   -->
                             <div id="changeStatus{{$i}}" class="absolute m-0 z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 status-chg-dropdown" style="inset: 0px auto auto 0px;">
                                 <ul class="py-2 text-sm text-gray-700" aria-labelledby="status_change{{$i}}">
                                     @if (auth()->user())
                                         @switch($record->status)
                                             @case(config("status.status_id.pending"))
                                                 <li>
-                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.booked")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Confirm Booking</a>
+                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status='{{config("status.status_id.booked")}}' class="update-status block px-4 py-2 hover:bg-gray-100">Confirm Booking</a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.checkedIn")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
+                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status='{{config("status.status_id.checkedIn")}}' class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
                                                 </li>
                                                 @break
 
                                             @case(config("status.status_id.booked"))
                                                 <li>
-                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.checkedIn")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
+                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status='{{config("status.status_id.checkedIn")}}' class="update-status block px-4 py-2 hover:bg-gray-100">Check In</a>
                                                 </li>
                                                 @break
 
                                             @case(config("status.status_id.checkedIn"))
                                                 <li>
-                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status="{{config("status.status_id.completed")}}" class="update-status block px-4 py-2 hover:bg-gray-100">Check Out</a>
+                                                    <a href="javascript:;" data-booking="{{$record->id}}" data-status='{{config("status.status_id.completed")}}' class="update-status block px-4 py-2 hover:bg-gray-100">Check Out</a>
                                                 </li>
                                                 @break
                                             @default
@@ -141,7 +141,7 @@
                                         @endswitch
                                     @endif
                                     <li onclick="deleteRow({{$i}})">
-                                        <form action="{{ route("$route.destroy", $record->id) }}" id="delete-form-{{$i}}" class="block px-4 py-2 hover:bg-gray-100" method="POST">
+                                        <form action='{{ route("$route.destroy", $record->id) }}' id="delete-form-{{$i}}" class="block px-4 py-2 hover:bg-gray-100" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="button" class="delete-btn" title="Delete">
