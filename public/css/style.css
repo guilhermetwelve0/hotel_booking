@@ -96,6 +96,11 @@ section.web-banner{
     background-color: white;
 }
 
+input[type="checkbox"].peer:checked + label.room-check{
+    border: 1px solid #2563eb;
+    color: #2563eb;
+}
+
 /* Responsive Based on Tailwind */
 
 /* sm */

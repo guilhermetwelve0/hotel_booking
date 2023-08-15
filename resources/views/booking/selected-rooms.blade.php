@@ -13,6 +13,12 @@
                 <th scope="col" class="px-6 py-3 rounded-r-lg">
                     Price
                 </th>
+                <th scope="col" class="px-6 py-3">
+                    Day Count
+                </th>
+                <th scope="col" class="px-6 py-3 rounded-r-lg">
+                    Total
+                </th>
             </tr>
         </thead>
         <tbody id="cal_table_body">
@@ -20,9 +26,9 @@
         </tbody>
         <tfoot>
             <tr class="font-semibold text-gray-900">
-                <th scope="row" class="px-6 py-3 text-base">Total</th>
-                <td class="px-6 py-3"></td>
-                <td class="px-6 py-3">$&nbsp;<span id="total">0</span></td>
+                <td colspan="3"></td>
+                <th scope="row" class="px-6 py-3 text-base">Grand Total</th>
+                <td class="px-6 py-3">$<span id="total">0</span></td>
                 <input type="hidden" name="total" id="total_input">
             </tr>
         </tfoot>
