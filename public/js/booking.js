@@ -28,6 +28,8 @@ $(document).ready(function() {
             dataType: "json",
             success: function (response) {
                 // console.log(response)
+                console.log(dateCount(startDate, endDate))
+                day_count = dateCount(startDate, endDate);
                 if(response.length > 0){
                     scrollTo('#filtered_room')
 
@@ -51,14 +53,12 @@ $(document).ready(function() {
 
                         // Table Row Update
                         if(!$(`#${check_id}`).prop('checked')){
-                            $('#cal_table_body').append(tableRow(idx, response[idx]))
+                            $('#cal_table_body').append(tableRow(idx, response[idx], day_count))
                             $('#rooms_input').append(`<input type="hidden" name="rooms[]" value="${response[idx].id}" id="input_${idx}">`)
                         } else {
                             $(`#row_${idx}`).remove()
                             $(`#input_${idx}`).remove()
                         }
-
-
 
                         // Update Total
                         sum = 0;
@@ -118,7 +118,7 @@ function roomSelector(index, room)
     return `
     <li>
         <input type="checkbox" id="room_${room.id}" value="${room.id}" class="hidden peer">
-        <label for="room_${room.id}" data-index="${index}" class="room-check inline-flex flex-col items-center justify-between h-full w-full p-5 text-gray-500 bg-[#fff9] border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-blue-600 peer-checked:text-blue-500 hover:bg-blue-50">
+    <label for="room_${room.id}" data-index="${index}" class="room-check inline-flex flex-col items-center justify-between h-full w-full p-5 text-gray-500 bg-[#fff9] border border-gray-200 rounded-lg cursor-pointer peer-checked:border-blue-600 hover:text-blue-600 peer-checked:text-blue-500 hover:bg-blue-50">
             <div class="w-full flex justify-between mb-3">
                 <div class="text-2xl font-bold">${room.floor}${room.room_no < 10 ? 0 : ''}${room.room_no}</div>
                 <div class="text-lg">${room.room_type.name}</div>
@@ -132,7 +132,7 @@ function roomSelector(index, room)
     `;
 }
 
-function tableRow(index, room){
+function tableRow(index, room, day){
     let cost = parseFloat(room.room_type.price);
 
     $.each(room.services, function(idx, val){
@@ -147,7 +147,13 @@ function tableRow(index, room){
                 ${room.floor}${room.room_no < 10 ? 0 : ''}${room.room_no}
             </td>
             <td class="px-6 py-4">
-                $<span class="price-val">${cost}</span>
+                $<span>${cost}</span>
+            </td>
+            <td class="px-6 py-4">
+                ${day} day${day > 1 ? 's' : ''}
+            </td>
+            <td class="px-6 py-4">
+                $<span class="price-val">${cost*day}</span>
             </td>
         </tr>
     `
@@ -158,4 +164,12 @@ function scrollTo(section){
     $('html, body').animate({
         scrollTop: $(section).offset().top
     }, 800);
+}
+
+function dateCount(startDate, endDate){
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
+    timeDifference = endDate.getTime() - startDate.getTime();
+    daysDifference = timeDifference / (1000 * 3600 * 24);
+    return daysDifference != 0 ? daysDifference : 1;
 }

@@ -58,8 +58,13 @@ class PageController extends Controller
     {
         if(session()->has('guest_id')){
             $guest_id = session('guest_id');
-            $guest = Guest::findOrFail($guest_id);
-            return view('web.booking-list', compact('guest'));
+
+            $guest = Guest::find($guest_id);
+            if($guest){
+                return view('web.booking-list', compact('guest'));
+            }else{
+                return view('web.register-guest');
+            }
         } else {
             return view('web.register-guest');
         }
@@ -94,7 +99,6 @@ class PageController extends Controller
             return redirect()->route('landing')->with('success', 'New Booking Successfully Created!');
         }
         catch(\Exception $e){
-            dd($e);
             return redirect()->back()->with('error', 'Something Went Wrong!');
         }
     }
