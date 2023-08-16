@@ -75,7 +75,7 @@
             <script>
                 iziToast.error({
                     title: 'Error',
-                    message: '{{ session('error') }}',
+                    me`ssage: '{{ session('error') }}',
                     transitionIn: "bounceInLeft",
                 });
             </script>
