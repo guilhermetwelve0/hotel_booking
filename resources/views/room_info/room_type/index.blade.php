@@ -15,7 +15,7 @@
             $fields = [
                 "name" => "Name",
                 "price" => "Cost",
-                // "description" => "Description",
+                "description" => "Description",
                 "thumbnail" => "Thumbnail",
             ];
         @endphp

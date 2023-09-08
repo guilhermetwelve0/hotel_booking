@@ -26,7 +26,7 @@
                 'Description' => [
                     'name' => 'description',
                     'type' => 'textarea',
-                    'attr' => []
+                    'attr' => [] //aqui se quiser podemos adicionar um total de caracteres
                 ],
             ];
         @endphp

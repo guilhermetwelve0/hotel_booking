@@ -27,7 +27,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        // return view('auth.register');
+        return view('auth.register');
         return view('setting.user.create-edit');
     }
 
@@ -51,9 +51,9 @@ class RegisteredUserController extends Controller
             return redirect()->back()->with('error', 'Something Went Wrong!');
         }
 
-        // Auth::login($user);
+         Auth::login($user);
 
-        // return redirect(RouteServiceProvider::HOME);
+         return redirect(RouteServiceProvider::HOME);
 
         return redirect()->route('setting.user.index')->with('success', 'New Admin User Successfully Created!');
     }

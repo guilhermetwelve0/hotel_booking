@@ -55,7 +55,7 @@
             <script>
                 iziToast.success({
                     title: 'Success',
-                    message: '{{ session('success') }}',
+                    message: '{{ session("success") }}',
                     transitionIn: "bounceInLeft",
                 });
             </script>
@@ -65,7 +65,7 @@
             <script>
                 iziToast.error({
                     title: 'Error',
-                    message: '{{ session('error') }}',
+                    message: '{{ session("error") }}',
                     transitionIn: "bounceInLeft",
                 });
             </script>

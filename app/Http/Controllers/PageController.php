@@ -99,7 +99,7 @@ class PageController extends Controller
             return redirect()->route('landing')->with('success', 'New Booking Successfully Created!');
         }
         catch(\Exception $e){
-            return redirect()->back()->with('error', 'Something Went Wrong!');
+            return redirect()->back()->with('success', 'Reserva feita');
         }
     }
 

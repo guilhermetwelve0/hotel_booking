@@ -34,15 +34,15 @@
     </div>
     <div class="pt-3 relative">
         <x-input-label for="type" :value="__('Room Type')" />
-        <select disabled name="guest" id="guest_select" class="mt-1 bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full p-2.5">
-            <option selected disabled>Select room type</option>
+        <select  name="guest" id="guest_select" class="mt-1 bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full p-2.5">
+            <option selected >Select room type</option>
         </select>
         <span class="bg-yellow-300 px-4 rounded-full border border-secondary text-xs absolute top-[25px] right-[25px]">Pro</span>
     </div>
     <div class="pt-3 relative">
         <x-input-label for="type" :value="__('Services and Facilities')" />
-        <select disabled name="guest" id="guest_select" class="mt-1 bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full p-2.5">
-            <option selected disabled>Select services and facilities</option>
+        <select name="guest" id="guest_select" class="mt-1 bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full p-2.5">
+            <option selected>Select services and facilities</option>
         </select>
         <span class="bg-yellow-300 px-4 rounded-full border border-secondary text-xs absolute top-[25px] right-[25px]">Pro</span>
     </div>

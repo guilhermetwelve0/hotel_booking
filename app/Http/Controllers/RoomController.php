@@ -46,7 +46,8 @@ class RoomController extends Controller
             }
         }
         catch(\Exception $e){
-            dd($e);
+            // dd($e);
+            session(['error' => $e->getMessage()]);
             return redirect()->back()->with('error', 'Something Went Wrong!');
         }
 
