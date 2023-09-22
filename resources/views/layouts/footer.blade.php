@@ -14,7 +14,7 @@
                   <h2 class="mb-6 text-sm font-semibold uppercase text-secondary">Main </h2>
                   <ul class="text-gray-400 font-medium">
                       <li>
-                          <a href="https://laravel.com/" class="hover:underline">PHP Larvel</a>
+                          <a href="{{route('blog')}}" class="hover:underline">Confira nosso Blog</a>
                       </li>
                       <li class="my-4">
                           <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>

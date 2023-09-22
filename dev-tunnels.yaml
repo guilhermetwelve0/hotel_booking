@@ -1,0 +1,7 @@
+app:
+  name: HotelBookingSustem
+  framework: Laravel
+  type: Mixed
+  port: 8000
+  vite:
+    port: 5137
