@@ -7,6 +7,7 @@ use App\Models\Guest;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookingRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -25,6 +26,8 @@ class BookingController extends Controller
     public function create()
     {
         $guests = Guest::get();
+        // precisa incluir isso dentro do filtro de busca $types = DB::table('room_types')->pluck('slug')->toArray();
+        // return view('booking.create', compact('guests', 'types'));
         return view('booking.create', compact('guests'));
     }
 
@@ -64,7 +67,6 @@ class BookingController extends Controller
     public function edit(Booking $booking)
     {
         dd('edit');
-
     }
 
     /**
