@@ -7,7 +7,7 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <header class="bg-gradient-to-b from-primary to-[#0001] py-20 text-white text-center">
         <div class="container mx-auto">
-            <h1 class="text-4xl font-semibold mb-4">Contact Royal Crown Hotel</h1>
+            <h1 class="text-4xl font-semibold mb-4">Contact Hotel</h1>
             <p class="text-lg text-secondary">Get in touch with us for inquiries or bookings.</p>
         </div>
     </header>
@@ -22,10 +22,10 @@
                             <i class="fa-solid fa-hotel me-2"></i> Address: 123 Luxury Lane,<br> Yangon, Myanmar
                         </div>
                         <div class="mb-5">
-                            <i class="fa-solid fa-phone-volume me-2"></i> Phone: (+95) 123-456-789<br>
+                            <i class="fa-solid fa-phone-volume me-2"></i> Phone: (+00) 123-456<br>
                         </div>
                         <div class="mb-5">
-                            <i class="fa-solid fa-envelope me-2"></i> Email: info@royalcrownhotel.com</p>
+                            <i class="fa-solid fa-envelope me-2"></i> Email: info@test.com</p>
                         </div>
                     </div>
                 </div>

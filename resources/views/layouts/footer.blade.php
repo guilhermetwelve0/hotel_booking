@@ -5,9 +5,8 @@
           <div class="mb-6 md:mb-0 flex flex-col justify-between">
               <a href="{{route('login')}}" class="flex items-center">
                   <img src="{{asset('img/crown.png')}}" class="h-8 mr-3" alt="FlowBite Logo" />
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap text-accent cinzel-decorative">Royal Crown</span>
+                  <span class="self-center text-2xl font-semibold whitespace-nowrap text-accent cinzel-decorative">ESC-SISTEMA DE GERENCIAMENTO HOTELEIRO</span>
               </a>
-                <span class="text-secondary text-xs mt-5">@Powered By SaiZ</span>
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
@@ -56,7 +55,7 @@
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div class="sm:flex sm:items-center sm:justify-between">
-          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#" class="hover:underline">RoyalCrown™</a>. All Rights Reserved.
+          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#" class="hover:underline">ESC-SISTEMA DE GERENCIAMENTO HOTELEIRO</a>
           </span>
         <div class="flex mt-4 space-x-5 justify-center sm:mt-0">
             <a href="https://github.com/SaiZack" target="_blank" class="text-accent hover:text-secondary hover:scale-150 transition" title="git hub">

@@ -9,7 +9,7 @@
     <header class="bg-gradient-to-b from-primary to-[#0001] py-20 text-white text-center">
         <div class="container mx-auto">
             <h1 class="text-4xl font-semibold mb-4">Rooms</h1>
-            <p class="text-lg text-secondary">Royal Luxury rooms from our hotel</p>
+            <p class="text-lg text-secondary">Luxury rooms from our hotel</p>
         </div>
     </header>
 

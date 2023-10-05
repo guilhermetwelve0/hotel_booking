@@ -42,7 +42,7 @@
             <div>
                 <a href="/" class="text-secondary text-3xl cinzel-decorative flex flex-col items-center sm:flex-row sm:items-end">
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
-                    <img src="{{asset('img/crown.png')}}" alt="crown" class="w-[75px]"><span>Royal Crown</span>
+                    <img src="{{asset('img/crown.png')}}" alt="crown" class="w-[75px]"><span>ESC-SISTEMA DE GERENCIAMENTO HOTELEIRO</span>
 
                 </a>
             </div>

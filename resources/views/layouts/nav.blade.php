@@ -7,7 +7,7 @@
                     <a href="{{ route('login') }}" class="flex items-end text-secondary text-xl">
                         {{-- <x-application-logo class="block h-9 w-auto fill-current text-secondary" /> --}}
                         <img src="{{asset('img/crown.png')}}" alt="crown" width="50px" class="me-3">
-                        ROyal CrOwN
+                        ESC-SISTEMA DE GERENCIAMENTO HOTELEIRO
                     </a>
                 </div>
 
