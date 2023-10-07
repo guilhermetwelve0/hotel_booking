@@ -42,9 +42,6 @@
 
         {{-- Rooms Cards --}}
         <section class="pb-10">
-            <div class="w-full flex justify-center stars">
-                <img src="{{asset('img/stars.png')}}" alt="stars" class="h-[50px]">
-            </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 

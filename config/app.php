@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Hotel Booking System'),
+    'name' => env('APP_NAME', 'ESC-HOTEL'),
 
     /*
     |--------------------------------------------------------------------------

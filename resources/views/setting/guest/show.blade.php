@@ -1,7 +1,7 @@
 @section('title', $guest->name . "'s Bookings")
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-primary leading-tight">
+        <h2 class="font-semibold text-xl  bg-green-900 leading-tight">
             {{ $guest->name . "'s Bookings" }}<i class="fa-solid fa-bookmark ps-3"></i>
         </h2>
     </x-slot>

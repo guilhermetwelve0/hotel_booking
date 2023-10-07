@@ -4,9 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="icon" type="image/x-icon" href="{{asset('img/favicon.png')}}">
 
-        <title>@yield('title', 'Home') | {{ config('app.name', 'Hotel Booking System') }}</title>
+        <title>@yield('title', 'Home') | {{ config('app.name', 'ESC-Hotel')}}</title>
 
         <link rel="stylesheet" href="{{ asset('/css/scroll.css')}}">
         <link rel="stylesheet" href="{{ asset('/css/style.css')}}">
@@ -44,7 +43,7 @@
     </head>
     <body class="font-sans antialiased">
 
-        <div class="min-h-screen bg-primary">
+         <div class="min-h-screen bg-green-900">
             @include('layouts.nav')
             <main>
                 @yield('content')

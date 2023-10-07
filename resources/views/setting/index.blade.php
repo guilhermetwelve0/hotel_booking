@@ -22,7 +22,7 @@
                     "icon" => "fa-solid fa-sliders",
                     "route" => "landing",
                     "summary" => "Website Banner Images, Contact Emails, Phone Numbers and Other Informations.",
-                    "disabled" => true
+                    
                 ],
                 "VIP Guests" => [
                     "icon" => "fa-regular fa-star",
