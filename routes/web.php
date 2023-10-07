@@ -59,6 +59,10 @@ Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
         Route::resource('/user', RegisteredUserController::class);
         Route::resource('/guest', GuestController::class);
     });
+
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::view('/', 'dashboard.index')->name('index');
+    });
 });
 
 require __DIR__.'/auth.php';

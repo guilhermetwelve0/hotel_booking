@@ -36,6 +36,9 @@
         <x-input-label for="type" :value="__('Room Type')" />
         <select  name="guest" id="guest_select" class="mt-1 bg-gray-300 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-primary focus:border-primary block w-full p-2.5">
             <option selected >Select</option>
+            {{-- @foreach ($types as $type)
+            <option value="{{ $type }}">{{ $type }}</option>
+        @endforeach esta funcionando mais precisa incluir isso dentro do filtro de busca --}}
         </select>
         <span class="bg-yellow-300 px-4 rounded-full border border-secondary text-xs absolute top-[25px] right-[25px]">Pro</span>
     </div>
