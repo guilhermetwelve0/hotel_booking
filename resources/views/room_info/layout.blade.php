@@ -29,16 +29,6 @@
                                                                 "name"=>"Rooms",
                                                                 "icon"=>"fa-door-closed"])
                         </li>
-                        <li>
-                            @include('components.sidebar-links',["name"=>"Branches",
-                                                                    "icon"=>"fa-sitemap",
-                                                                    "disabled"=>true])
-                        </li>
-                        <li>
-                            @include('components.sidebar-links',["name"=>"Buildings",
-                                                                "icon"=>"fa-building",
-                                                                "disabled"=>true])
-                        </li>
                     </ul>
                 </div>
             </aside>

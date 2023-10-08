@@ -76,10 +76,8 @@
             @if ($name == "price")
                 <div class="pb-5 relative">
                     <label>Currency</label>
-                    <x-text-input type="text" :disabled="true"
-                        class="mt-1 block w-full bg-gray-200"
-                        value="Dollar ($)" />
-                    <span class="bg-yellow-300 px-5 rounded-full border border-secondary text-xs absolute top-[20px] right-[20px]">Pro</span>
+                    <x-text-input type="text" :disabled="true" 
+                        value="Dollar ($)"  />
                 </div>
             @endif
         @endforeach

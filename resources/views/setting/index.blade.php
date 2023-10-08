@@ -24,12 +24,7 @@
                     "summary" => "Website Banner Images, Contact Emails, Phone Numbers and Other Informations.",
                     
                 ],
-                "VIP Guests" => [
-                    "icon" => "fa-regular fa-star",
-                    "route" => "landing",
-                    "summary" => "Set VIP Member Guests to imporove Customer Management Services.",
-                    "disabled" => true,
-                ],
+                
             ]
         @endphp
 
