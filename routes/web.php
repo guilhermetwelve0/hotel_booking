@@ -7,6 +7,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ServiceFacilityController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\ServiceFacility;
@@ -23,15 +24,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PageController::class,'landing'])->name('landing');
-Route::get('/about', [PageController::class,'about'])->name('about');
-Route::get('/blog', [PageController::class,'blog'])->name('blog');
-Route::get('/contact', [PageController::class,'contact'])->name('contact');
-Route::post('/guest-info-add', [PageController::class,'guestInfoAdd'])->name('guest-info-add');
-Route::get('/guest-booking', [PageController::class,'guestBooking'])->name('guest-booking');
-Route::post('/guest-booking-add', [PageController::class,'guestBookingAdd'])->name('guest-booking-add');
-Route::get('/change-guest', [PageController::class,'changeGuest'])->name('change-guest');
-Route::get('/room-list', [PageController::class,'roomList'])->name('room-list');
+Route::get('/', [PageController::class, 'landing'])->name('landing');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
+Route::post('/guest-info-add', [PageController::class, 'guestInfoAdd'])->name('guest-info-add');
+Route::get('/guest-booking', [PageController::class, 'guestBooking'])->name('guest-booking');
+Route::post('/guest-booking-add', [PageController::class, 'guestBookingAdd'])->name('guest-booking-add');
+Route::get('/change-guest', [PageController::class, 'changeGuest'])->name('change-guest');
+Route::get('/room-list', [PageController::class, 'roomList'])->name('room-list');
 
 Route::prefix('/ajax')->name('ajax.')->controller(AjaxController::class)->group(function () {
     Route::get('/search-rooms', 'searchRooms')->name('search-rooms');
@@ -48,13 +49,13 @@ Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
     Route::get('booking/canceled-list', [BookingController::class, 'canceledList'])->name('booking.canceled-list');
     Route::resource('booking', BookingController::class);
 
-    Route::prefix('room-info')->name('room-info.')->group(function (){
+    Route::prefix('room-info')->name('room-info.')->group(function () {
         Route::resource('room-type', RoomTypeController::class);
         Route::resource('room', RoomController::class);
         Route::resource('service-facility', ServiceFacilityController::class);
     });
 
-    Route::prefix('setting')->name('setting.')->group(function (){
+    Route::prefix('setting')->name('setting.')->group(function () {
         Route::view('/', 'setting.index')->name('index');
         Route::resource('/user', RegisteredUserController::class);
         Route::resource('/guest', GuestController::class);
@@ -62,7 +63,9 @@ Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
 
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::view('/', 'dashboard.index')->name('index');
+        Route::redirect('/', '/admin/dashboard/chart');
+        Route::get('/chart', [ChartController::class,'index'])->name('dashboard.index');
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
