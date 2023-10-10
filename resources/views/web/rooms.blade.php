@@ -1,15 +1,15 @@
 
 @extends('layouts.main')
 
-@section('title', 'Rooms List')
+@section('title', 'Lista de Quartos')
 
 @section('content')
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <header class="bg-gradient-to-b from-primary to-[#0001] py-20 text-white text-center">
+    <header class="bg-green py-20 text-white text-center">
         <div class="container mx-auto">
-            <h1 class="text-4xl font-semibold mb-4">Rooms</h1>
-            <p class="text-lg text-secondary">Royal Luxury rooms from our hotel</p>
+            <h1 class="text-4xl font-semibold mb-4">Quartos</h1>
+            <p class="text-lg text-secondary">Quartos disponíveis em nosso hotel</p>
         </div>
     </header>
 

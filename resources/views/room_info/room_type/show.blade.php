@@ -25,9 +25,9 @@
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             @php
                 $fields = [
-                    "room_no" => "Room No",
-                    "floor" => "Floor",
-                    "service_facility" => "Services & Facilities"
+                    "room_no" => "N° do Quarto",
+                    "floor" => "Andar",
+                    "service_facility" => "Serviços e Facilidades"
                 ];
             @endphp
             @include('components.table', [

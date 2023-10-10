@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/x-icon" href="{{asset('img/favicon.png')}}">
 
-    <title>@yield('title', 'Adminstration') | {{ config('app.name', 'Hotel Booking System') }}</title>
+    <title>@yield('title', 'Adminstration') | {{ config('app.name', 'ESC-Hotel') }}</title>
 
     <link rel="stylesheet" href="{{ asset('/css/scroll.css')}}">
     <link rel="stylesheet" href="{{ asset('/css/style.css')}}">

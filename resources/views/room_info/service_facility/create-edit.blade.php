@@ -1,6 +1,6 @@
 @extends('room_info.layout')
 
-@section('title', "Services & Facilities")
+@section('title', "Serviços e Facilidades")
 
 @section('content')
     <div class="flex justify-between items-center pb-4">
@@ -10,16 +10,16 @@
         @php
             $route = "room-info.service-facility";
             $fields = [
-                'Icon' => [
+                'Ícone' => [
                     'name' => 'icon',
                     'type' => 'select',
                     'attr' => ['required']
                 ],
-                'Name' => [
+                'Nome' => [
                     'name' => 'name',
                     'attr' => ['required','autofocus','autocomplete']
                 ],
-                'Price' => [
+                'Preço' => [
                     'name' => 'price',
                     'attr' => ['autocomplete']
                 ],
