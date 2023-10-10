@@ -4,8 +4,7 @@
         <div class="flex justify-between h-16">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center cinzel-decorative">
-                    <a href="{{ route('login') }}" class="flex items-end text-secondary text-xl">
-                        {{-- <x-application-logo class="block h-9 w-auto fill-current text-secondary" /> --}}
+                    <a href="{{ route('landing') }}" class="flex items-end text-secondary text-xl">
                         <img src="{{asset('img/crown.png')}}" alt="crown" width="50px" class="me-3">
                         ESC-SISTEMA DE GERENCIAMENTO HOTELEIRO
                     </a>
@@ -15,6 +14,9 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('landing')" :active="request()->routeIs('landing')">
                         {{ __('Home') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                        {{ __('login') }}
                     </x-nav-link>
                     <x-nav-link :href="route('room-list')" :active="request()->routeIs('room-list')">
                         {{ __('Rooms') }}
@@ -46,6 +48,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('landing')" :active="request()->routeIs('landing')">
                 {{ __('Home') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                {{ __('login') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('room-list')" :active="request()->routeIs('room-list')">
                 {{ __('Rooms') }}
