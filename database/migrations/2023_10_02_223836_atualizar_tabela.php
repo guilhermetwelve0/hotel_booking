@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('status'); // Remova o valor padrão
+            $table->integer('status')->default(0); // Remova o valor padrão
             $table->text('two_factor_secret')->nullable();
             $table->timestamp('two_factor_confirmed_at')->nullable();
             $table->string('sub', 255)->nullable();

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::table('room_service_facility', function (Blueprint $table) {
             $table->date('date')->nullable();
-            $table->string('product_id', 11);
-            $table->string('status', 255);
-            $table->bigInteger('created_by')->unsigned();
+            $table->string('product_id', 11)->default(0);
+            $table->string('status', 255)->default(0);
+            $table->bigInteger('created_by')->unsigned()->default(0);
         });
     }
 

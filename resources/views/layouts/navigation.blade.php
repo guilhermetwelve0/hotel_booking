@@ -20,6 +20,9 @@
                     <x-nav-link :href="route('dashboard.index')" :active="request()->routeIs('dashboard.*')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('contato.index')" :active="request()->routeIs('contato.*')">
+                        {{ __('Informações - Contato') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
                         {{ __('Informações - Quartos') }}
                     </x-nav-link>

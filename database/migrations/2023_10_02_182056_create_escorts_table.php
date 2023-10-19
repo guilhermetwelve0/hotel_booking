@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('escorts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 255);
-            $table->string('last_name', 255);
-            $table->string('cpf', 11);
-            $table->string('registered_by', 255);
+            $table->id()->default(0);
+            $table->string('name', 255)->default(0);
+            $table->string('last_name', 255)->default(0);
+            $table->string('cpf', 11)->default(0);
+            $table->string('registered_by', 255)->default(0);
             $table->timestamps();
         });
     }

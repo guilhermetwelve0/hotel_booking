@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('rooms', function (Blueprint $table) {
-            $table->text('description');
-            $table->string('price_per_day', 255);
-            $table->bigInteger('branch_id')->unsigned();
-            $table->integer('status', 11);
-            $table->string('status_reservation', 255);
-            $table->bigInteger('created_by')->unsigned();
+        Schema::create('contatos', function (Blueprint $table) {
+            $table->id();
+            $table->string('telefone', 15)->numeric();
+            $table->string('nome');
+            $table->string('email');
+            $table->text('mensagem');
+            $table->timestamps();
         });
     }
 

@@ -15,12 +15,21 @@ class UsersSeeder extends Seeder
     public function run(): void
     {
         $users = [
-            
+            [
+            'name' => 'Admin',
+            'email' => 'admin@teste.com',
+            'password' => Hash::make('password'),
+        ],
+        [
+            'name' => 'Teste',
+            'email' => 'teste@teste.com',
+            'password' => Hash::make('password')
+            ],
         ];
 
         foreach ($users as $data) {
             $user = new User();
-            $user->fill($data);
+            //$user->fill($data);
             $user->save();
         }
 
