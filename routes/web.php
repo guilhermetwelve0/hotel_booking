@@ -54,6 +54,13 @@ Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
     Route::get('booking/canceled-list', [BookingController::class, 'canceledList'])->name('booking.canceled-list');
     Route::resource('booking', BookingController::class);
 
+
+    Route::prefix('admin/booking')->group(function () {
+        Route::get('export/pdf', [BookingController::class, 'exportPdf'])->name('booking.exportRowPdf');
+        Route::get('export/excel', [BookingController::class, 'exportExcel'])->name('booking.exportRowExcel');
+        Route::get('export/csv', [BookingController::class, 'exportCsv'])->name('booking.exportRowCsv');
+    });
+
     Route::prefix('room-info')->name('room-info.')->group(function () {
         Route::resource('room-type', RoomTypeController::class);
         Route::resource('room', RoomController::class);

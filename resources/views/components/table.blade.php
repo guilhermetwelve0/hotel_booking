@@ -18,6 +18,9 @@
             <th class="bg-gray-{{ count($fields) % 2 ? '50' : '100' }}">
                 Ações
             </th>
+            <th class="bg-gray-{{ count($fields) % 2 ? '50' : '100' }}">
+                Exportar
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -161,6 +164,24 @@
                             <span class="bg-yellow-300 px-3 rounded-full border border-secondary text-xs absolute top-[-15px] right-[-25px]">Pro</span>
                         </button>
                     @endif
+                </td>
+                <td class="bg-gray-{{ count($fields) % 2 ? '100' : '50' }} min-w-[111px] ">
+                    <a class="px-1 mx-1 export-btn cursor-pointer" title="Exportar" id="export{{$i}}" onclick="initDropdowns()" data-dropdown-toggle="exportOptions{{$i}}">
+                        <i class="fa-solid fa-download fa-lg"></i>
+                    </a>
+                    <div id="exportOptions{{$i}}" class="absolute m-0 z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 export-dropdown" style="inset: 0px auto auto 0px;">
+                        <ul class="py-2 text-sm text-gray-700" aria-labelledby="export{{$i}}">
+                            <li>
+                                <a href="{{ route('booking.exportRowPdf', $record->id) }}" class="block px-4 py-2 hover:bg-gray-100">Exportar para PDF</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('booking.exportRowExcel', $record->id) }}" class="block px-4 py-2 hover:bg-gray-100">Exportar para Excel</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('booking.exportRowCsv', $record->id) }}" class="block px-4 py-2 hover:bg-gray-100">Exportar para CSV</a>
+                            </li>
+                        </ul>
+                    </div>
                 </td>
             </tr>
         @endforeach
