@@ -3,7 +3,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __(isset($guest) ? 'Edit Guest Info' : 'Create New Guest') }}<i class="fa-solid fa-user-pen ms-3"></i>
+            {{ __(isset($guest) ? 'Edit Guest Info' : 'Criar Novo Hóspede') }}<i class="fa-solid fa-user-pen ms-3"></i>
         </h2>
     </x-slot>
 
@@ -16,7 +16,7 @@
                 @php
                     $route = "setting.guest";
                     $fields = [
-                        'Name' => [
+                        'Nome' => [
                             'name' => 'name',
                             'attr' => ['required','autofocus','autocomplete']
                         ],
@@ -25,7 +25,7 @@
                             'type' => 'email',
                             'attr' => ['autocomplete']
                         ],
-                        'Phone' => [
+                        'Telefone' => [
                             'name' => 'phone',
                             'type' => 'number',
                             'attr' => ['autocomplete']

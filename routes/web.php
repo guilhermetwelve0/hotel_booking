@@ -7,6 +7,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ServiceFacilityController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\ServiceFacility;
@@ -58,6 +59,12 @@ Route::middleware(['auth', 'verified'])->prefix('/admin')->group(function () {
         Route::resource('/user', RegisteredUserController::class);
         Route::resource('/guest', GuestController::class);
     });
+
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::view('/', 'dashboard.index')->name('index');
+        Route::redirect('/', '/admin/dashboard/chart');
+        Route::get('/chart', [ChartController::class,'index'])->name('dashboard.index');
+    });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

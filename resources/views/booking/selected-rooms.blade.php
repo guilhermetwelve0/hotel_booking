@@ -1,17 +1,17 @@
 
-<h3 class="mb-5 text-lg font-medium text-gray-900">Selected Rooms</h3>
+<h3 class="mb-5 text-lg font-medium text-gray-900">Quartos Selecionados</h3>
 <div class="relative overflow-x-auto">
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-100">
             <tr>
                 <th scope="col" class="px-6 py-3 rounded-l-lg">
-                    Room Type
+                    Tipo de Quarto
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Room No
+                    N° do Quarto
                 </th>
                 <th scope="col" class="px-6 py-3 rounded-r-lg">
-                    Price
+                    Preço
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Day Count

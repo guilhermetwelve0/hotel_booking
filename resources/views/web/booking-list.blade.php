@@ -1,15 +1,15 @@
 
 @extends('layouts.main')
 
-@section('title', 'Booking List')
+@section('title', 'Lista de Reservas')
 
 @section('content')
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <header class="bg-gradient-to-b from-primary to-[#0001] py-20 text-white text-center">
+    <header class="bg-green py-20 text-white text-center">
         <div class="container mx-auto">
-            <h1 class="text-4xl font-semibold mb-4">Welcome, {{$guest->name}}</h1>
-            <p class="text-lg text-secondary">Your Booking List</p>
+            <h1 class="text-4xl font-semibold mb-4">Bem Vindo, {{$guest->name}}</h1>
+            <p class="text-lg text-secondary">Sua Lista de Reservas</p>
         </div>
     </header>
 
@@ -17,11 +17,11 @@
         <div class="container relative overflow-x-auto shadow-md sm:rounded-lg bg-gray-100">
             @php
                 $fields = [
-                    'rooms' => 'Rooms',
+                    'rooms' => 'Quartos',
                     'check_in_date' => 'Check In',
                     'check_out_date' => 'Check Out',
-                    'type' => 'Registration Type',
-                    'total' => 'Total Cost',
+                    'type' => 'Tipo de Registro',
+                    'total' => 'Custo Total',
                     'status' => 'Status',
                 ];
             @endphp
@@ -33,7 +33,7 @@
             ])
         </div>
         <div class="flex justify-end py-3">
-            <a href="{{route('change-guest')}}" class="text-white hover:text-blue-500 hover:underline">Change Guest <i class="fa-solid fa-right-from-bracket fa-lg mx-3"></i></a>
+            <a href="{{route('change-guest')}}" class="text-white hover:text-blue-500 hover:underline">Mudar Hóspede <i class="fa-solid fa-right-from-bracket fa-lg mx-3"></i></a>
         </div>
     </section>
 </div>

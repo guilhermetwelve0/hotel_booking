@@ -15,13 +15,16 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('booking.index')" :active="request()->routeIs('booking.*')">
-                        {{ __('Booking') }}
+                        {{ __('Reservas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.index')" :active="request()->routeIs('dashboard.*')">
+                        {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('room-info.room-type.index')" :active="request()->routeIs('room-info.*')">
-                        {{ __('Room Info') }}
+                        {{ __('Informações - Quartos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('setting.index')" :active="request()->routeIs('setting.*') || request()->routeIs('profile.*') ">
-                        {{ __('Setting') }}
+                        {{ __('Configurações') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -43,7 +46,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            <i class="fa-solid fa-user me-3"></i>{{ __('Profile') }}
+                            <i class="fa-solid fa-user me-3"></i>{{ __('Perfil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -53,7 +56,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                <i class="fa-solid fa-right-from-bracket me-3"></i>{{ __('Log Out') }}
+                                <i class="fa-solid fa-right-from-bracket me-3"></i>{{ __('Sair') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

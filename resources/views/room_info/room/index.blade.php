@@ -1,11 +1,11 @@
 @extends('room_info.layout')
 
-@section('title', "Rooms")
+@section('title', "Quartos")
 
 @section('content')
     <div class="flex justify-between items-center pb-4">
         @include('components.back-and-create-btn', [
-            'name' => 'Room',
+            'name' => 'Quarto',
             'route' => 'room-info.room.create',
             'create' => true
         ])
@@ -13,10 +13,10 @@
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         @php
             $fields = [
-                "room_no" => "Room No",
-                "floor" => "Floor",
-                "roomType" => "Room Type",
-                "service_facility" => "Services & Facilities"
+                "room_no" => "N° do Quarto",
+                "floor" => "Andar",
+                "roomType" => "Tipo de Quarto",
+                "service_facility" => "Serviços e Facilidades"
             ];
         @endphp
         @include('components.table', ["records" => $rooms,

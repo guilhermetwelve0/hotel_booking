@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
-            {{ __('Room Info') }}<i class="fa-solid fa-dungeon ms-3"></i>
+            {{ __('Informação - Quarto') }}<i class="fa-solid fa-dungeon ms-3"></i>
         </h2>
     </x-slot>
         <div class="relative min-h-screen">
@@ -28,16 +28,6 @@
                             @include('components.sidebar-links',["sidebar_route"=>"room-info.room",
                                                                 "name"=>"Rooms",
                                                                 "icon"=>"fa-door-closed"])
-                        </li>
-                        <li>
-                            @include('components.sidebar-links',["name"=>"Branches",
-                                                                    "icon"=>"fa-sitemap",
-                                                                    "disabled"=>true])
-                        </li>
-                        <li>
-                            @include('components.sidebar-links',["name"=>"Buildings",
-                                                                "icon"=>"fa-building",
-                                                                "disabled"=>true])
                         </li>
                     </ul>
                 </div>
