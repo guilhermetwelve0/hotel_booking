@@ -1,7 +1,7 @@
 @section('title', $guest->name . "'s Bookings")
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl  bg-green-900 leading-tight">
+    <h2 class="font-semibold text-xl  bg-green-900 leading-tight">
             {{ $guest->name . "'s Bookings" }}<i class="fa-solid fa-bookmark ps-3"></i>
         </h2>
     </x-slot>
@@ -9,7 +9,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-4 justify-center">
         <div class="flex justify-between items-center p-4">
             @include('components.back-and-create-btn', [
-                'name' => 'Guest',
+                'name' => 'Hóspedes',
                 'route' => 'setting.guest.create',
                 'back' => 'setting.guest.index',
             ])

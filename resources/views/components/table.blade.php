@@ -4,7 +4,7 @@
     <thead class="text-xs text-gray-700 uppercase">
         <tr>
             <th class="bg-gray-50">
-                No.
+                ID
             </th>
 
             @foreach ($fields as $col => $label)
@@ -16,7 +16,7 @@
                 </th>
             @endforeach
             <th class="bg-gray-{{ count($fields) % 2 ? '50' : '100' }}">
-                Actions
+                Ações
             </th>
         </tr>
     </thead>

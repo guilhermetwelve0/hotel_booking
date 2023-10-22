@@ -1,14 +1,14 @@
 
 @extends('layouts.main')
 
-@section('title', 'About Us')
+@section('title', 'Sobre Nós')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <header class="bg-gradient-to-b from-primary to-[#0001] py-20 text-white text-center">
+    <header class="bg-green py-20 text-white text-center">
         <div class="container mx-auto">
-            <h1 class="text-4xl font-semibold mb-4">Welcome Hotel</h1>
-            <p class="text-lg text-secondary">Experience luxury like never before.</p>
+        <h1 class="text-4xl font-semibold mb-4">Bem Vindo</h1>
+            <p class="text-lg text-secondary">Experiências únicas e Inesquecíveis.</p>
         </div>
     </header>
 
@@ -16,12 +16,12 @@
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <div class="space-y-4">
-                    <h2 class="text-2xl font-semibold text-secondary">Our Story</h2>
-                    <p class="text-gray-300">With a commitment to elegance and comfort, we have crafted an oasis of luxury for our esteemed guests.</p>
+                    <h2 class="text-2xl font-semibold text-secondary">Nossa História</h2>
+                    <p class="text-gray-300">Sempre com muita responsabilidade e comprometimento com nossos clientes, sempre buscamos oferecer o que há de melhor à todos, para que tenham uma ótima experiência.</p>
                 </div>
                 <div class="space-y-4">
-                    <h2 class="text-2xl font-semibold text-secondary">Our Mission</h2>
-                    <p class="text-gray-300"> our mission is to provide a memorable and exceptional experience to every guest. We strive to create an atmosphere of relaxation and indulgence, ensuring that your stay is nothing short of extraordinary.</p>
+                    <h2 class="text-2xl font-semibold text-secondary">Nossa Missão</h2>
+                    <p class="text-gray-300">Nossa missão é oferecer a melhor experiência para todos os hóspedes e fazer com que ao fim da estadia estejam satisfeitos e tenham vontade de retornar.</p>
                 </div>
             </div>
         </div>

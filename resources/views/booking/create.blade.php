@@ -1,9 +1,9 @@
-@section('title', "Make Booking")
+@section('title', "Fazer Reserva")
 
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __("Make Booking") }}<i class="fa-solid fa-bookmark ms-3"></i>
+            {{ __("Fazer Reserva") }}<i class="fa-solid fa-bookmark ms-3"></i>
         </h2>
     </x-slot>
 

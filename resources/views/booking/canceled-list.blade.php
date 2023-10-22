@@ -1,9 +1,9 @@
-@section('title', "Canceled Booking List")
+@section('title', "Lista de Reservas Canceladas")
 
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
-            {{ __('Canceled Booking List') }}<i class="fa-solid fa-solid fa-book ps-3"></i>
+            {{ __('Lista de Reservas Canceladas') }}<i class="fa-solid fa-solid fa-book ps-3"></i>
         </h2>
     </x-slot>
 
@@ -18,11 +18,11 @@
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             @php
                 $fields = [
-                    'guest' => 'Guest',
+                    'guest' => 'Hóspede',
                     'check_in_date' => 'Check In',
                     'check_out_date' => 'Check Out',
-                    'type' => 'Registration Type',
-                    'total' => 'Total Cost',
+                    'type' => 'Tipo de Registro',
+                    'total' => 'Custo Total',
                     'status' => 'Status',
                 ];
             @endphp

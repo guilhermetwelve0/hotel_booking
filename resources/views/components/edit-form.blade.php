@@ -81,7 +81,7 @@
             <x-text-input type="text" :disabled="true" class="mt-1 block w-full bg-gray-200" value="Dollar ($)" />
             <span class="bg-yellow-300 px-5 rounded-full border border-secondary text-xs absolute top-[20px] right-[20px]">Pro</span>
         </div> -->
-        <div class="pb-5 relative">
+       <!-- <div class="pb-5 relative">
             <label>Currency</label>
             <select class="mt-1 block w-full bg-gray-200" value="Dollar ($)" name="currency">
                 <option value="Dollar ($)" selected>Dollar ($)</option>
@@ -89,9 +89,9 @@
                 <option value="Real (R$)">Real (R$)</option>
             </select>
             <span class="bg-yellow-300 px-5 rounded-full border border-secondary text-xs absolute top-[20px] right-[20px]">Pro</span>
-        </div>
+        </div>-->
         @endif
         @endforeach
-        <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <x-primary-button>{{ __('Salvar') }}</x-primary-button>
     </form>
 </div>

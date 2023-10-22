@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-gradient-to-l from-primary bg-green-900">
+<nav x-data="{ open: false }" class="bg-green-900">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -16,19 +16,19 @@
                         {{ __('Home') }}
                     </x-nav-link>
                     <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                        {{ __('login') }}
+                        {{ __('Login') }}
                     </x-nav-link>
                     <x-nav-link :href="route('room-list')" :active="request()->routeIs('room-list')">
-                        {{ __('Rooms') }}
+                        {{ __('Quartos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('guest-booking')" :active="request()->routeIs('guest-booking')">
-                        {{ __('Booking') }}
+                        {{ __('Reservas') }}
                     </x-nav-link>
                     <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
-                        {{ __('About') }}
+                        {{ __('Sobre Nós') }}
                     </x-nav-link>
                     <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
-                        {{ __('Contact') }}
+                        {{ __('Contato') }}
                     </x-nav-link>
                 </div>
             <!-- Hamburger -->

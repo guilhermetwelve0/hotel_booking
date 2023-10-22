@@ -1,9 +1,9 @@
-@section('title', "Admin Users' Setting")
+@section('title', "Administradores' Setting")
 
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-primary leading-tight">
-            {{ __('Admin Users') }}<i class="fa-solid fa-solid fa-users-gear ps-3"></i>
+            {{ __('Administradores') }}<i class="fa-solid fa-solid fa-users-gear ps-3"></i>
         </h2>
     </x-slot>
 
@@ -19,11 +19,11 @@
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             @php
                 $fields = [
-                    'name' => 'Name',
+                    'name' => 'Nome',
                     'email' => 'Email',
-                    'created_at' => 'Date Create',
-                    'updated_at' => 'Latest Update',
-                    'updatedByUser' => 'Updated By',
+                    'created_at' => 'Data de Criação',
+                    'updated_at' => 'Última Atualização',
+                    'updatedByUser' => 'Atualizado por',
                 ];
             @endphp
             @include('components.table', [

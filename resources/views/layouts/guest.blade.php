@@ -38,12 +38,10 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-primary antialiased">
-        <div class="min-h-screen flex flex-col justify-center items-center pt-6 sm:pt-0 bg-green-900">
-            <div>
+    <div class="min-h-screen flex flex-col justify-center items-center pt-6 sm:pt-0 bg-green-900">            <div>
                 <a href="/" class="text-secondary text-3xl cinzel-decorative flex flex-col items-center sm:flex-row sm:items-end">
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
                     <img src="{{asset('img/crown.png')}}" alt="crown" class="w-[75px]"><span>ESC-HOTEL MANAGEMENT SYSTEM</span>
-
                 </a>
             </div>
 

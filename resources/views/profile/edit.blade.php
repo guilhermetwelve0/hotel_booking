@@ -1,9 +1,9 @@
-@section('title', "Edit Profile")
+@section('title', "Editar Perfil")
 
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Profile') }}<i class="fa-solid fa-user-pen ms-3"></i>
+            {{ __('Editar Perfil') }}<i class="fa-solid fa-user-pen ms-3"></i>
         </h2>
     </x-slot>
 

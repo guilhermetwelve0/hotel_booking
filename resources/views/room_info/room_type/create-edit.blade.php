@@ -1,6 +1,6 @@
 @extends('room_info.layout')
 
-@section('title', "Room Types")
+@section('title', "Tipos de Quartos")
 
 @section('content')
     <div class="flex justify-between items-center pb-4">
@@ -10,20 +10,20 @@
         @php
             $route = "room-info.room-type";
             $fields = [
-                'Thumbnail' => [
+                'Imagem' => [
                     'name' => 'thumbnail',
                     'type' => 'file',
                     'attr' => ['required']
                 ],
-                'Name' => [
+                'Nome' => [
                     'name' => 'name',
                     'attr' => ['required','autofocus','autocomplete']
                 ],
-                'Price' => [
+                'Preço' => [
                     'name' => 'price',
                     'attr' => ['required']
                 ],
-                'Description' => [
+                'Descrição' => [
                     'name' => 'description',
                     'type' => 'textarea',
                     'attr' => [] //aqui se quiser podemos adicionar um total de caracteres

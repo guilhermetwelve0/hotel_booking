@@ -1,14 +1,14 @@
 
 @extends('layouts.main')
 
-@section('title', 'Contact Us')
+@section('title', 'Contato')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <header class="bg-gradient-to-b from-primary to-[#0001] py-20 text-white text-center">
+    <header class="bg-green py-20 text-white text-center">
         <div class="container mx-auto">
-            <h1 class="text-4xl font-semibold mb-4">Contact Hotel</h1>
-            <p class="text-lg text-secondary">Get in touch with us for inquiries or bookings.</p>
+            <h1 class="text-4xl font-semibold mb-4">Contato</h1>
+            <p class="text-lg text-secondary">Entre em contato conosco para perguntas ou reservas.</p>
         </div>
     </header>
 
@@ -16,36 +16,36 @@
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <div>
-                    <h2 class="text-2xl font-semibold mb-4 text-secondary">Contact Information</h2>
+                    <h2 class="text-2xl font-semibold mb-4 text-secondary">Informações de Contato</h2>
                     <div class="text-gray-200">
                         <div class="mb-5">
-                            <i class="fa-solid fa-hotel me-2"></i> Address: 123 Luxury Lane,<br> Yangon, Myanmar
+                            <i class="fa-solid fa-hotel me-2"></i> Endereço: Rua Itajubá, 673 -<br> Curitiba, Brasil
                         </div>
                         <div class="mb-5">
-                            <i class="fa-solid fa-phone-volume me-2"></i> Phone: (+00) 123-456<br>
+                            <i class="fa-solid fa-phone-volume me-2"></i> Telefone: (+00) 1234-5678<br>
                         </div>
                         <div class="mb-5">
-                            <i class="fa-solid fa-envelope me-2"></i> Email: info@test.com</p>
+                            <i class="fa-solid fa-envelope me-2"></i> Email: info@teste.com</p>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <h2 class="text-2xl font-semibold mb-4 text-secondary">Get In Touch</h2>
+                    <h2 class="text-2xl font-semibold mb-4 text-secondary">Entre em Contato</h2>
                     <form action="{{route('guest-info-add')}}" method="POST">
                         @csrf
                         <div class="mb-4">
-                            <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Full Name" class="mt-1 p-2 w-full border rounded-md">
+                            <label for="name" class="block text-sm font-medium text-gray-300">Nome</label>
+                            <input type="text" id="name" name="name" placeholder="Nome Completo" class="mt-1 p-2 w-full border rounded-md">
                         </div>
                         <div class="mb-4">
                             <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Email Address" class="mt-1 p-2 w-full border rounded-md">
+                            <input type="email" id="email" name="email" placeholder="Endereço de Email" class="mt-1 p-2 w-full border rounded-md">
                         </div>
                         <div class="mb-4">
-                            <label for="phone" class="block text-sm font-medium text-gray-300">Phone</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Phone Number" class="mt-1 p-2 w-full border rounded-md">
+                            <label for="phone" class="block text-sm font-medium text-gray-300">Telefone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Número de Telefone" class="mt-1 p-2 w-full border rounded-md">
                         </div>
-                        <button type="submit" class="text-secondary border border-secondary px-4 py-2 rounded-md hover:bg-secondary hover:text-primary">Submit</button>
+                        <button type="submit" class="text-secondary border border-secondary px-4 py-2 rounded-md hover:bg-secondary hover:text-primary">Enviar</button>
                     </form>
                 </div>
             </div>
